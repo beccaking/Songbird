@@ -7,7 +7,7 @@ require('dotenv').config()
 app.listen(3000);
 
 // Port ===============
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 // Database ===============
 const MONGODB_URI  = process.env.MONGODB_URI
