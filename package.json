@@ -2,6 +2,9 @@
   "name": "songbirds",
   "version": "1.0.0",
   "description": "A music sharing app",
+  "engines": {
+    "node":"10.16.3"
+  },
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
