@@ -6,8 +6,10 @@ const app = express();
 require('dotenv').config()
 
 // Port ===============
-const PORT = process.env.PORT || 8080;
-app.listen(PORT);
+const PORT = process.env.PORT;
+app.listen(PORT, () => {
+  console.log('listening on port', PORT)
+});
 
 // Database ===============
 const MONGODB_URI  = process.env.MONGODB_URI
