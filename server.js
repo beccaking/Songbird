@@ -18,3 +18,8 @@ mongoose.connect(MONGODB_URI  ,  {useNewUrlParser:true, useUnifiedTopology:true,
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
 db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
 db.on('disconnected', () => console.log('mongo disconnected'));
+
+// Routes ===============
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+})
