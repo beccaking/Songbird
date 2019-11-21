@@ -5,6 +5,9 @@ const db = mongoose.connection;
 const app = express();
 require('dotenv').config()
 
+app.use(express.json());
+app.use(express.static('public'));
+
 // Port ===============
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
@@ -22,6 +25,6 @@ db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 // Routes ===============
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-})
+// app.get('/', (req, res) => {
+//     res.send('Hello World!');
+// })

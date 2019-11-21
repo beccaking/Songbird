@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app='MyApp'>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/app.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+    <script src="../app.js" charset="utf-8"></script>
+    <title></title>
+  </head>
+  <body ng-controller="MainController as ctrl">
+<!-- Header into this file -->
+<div class="container">
+  <div class="header">
+    <h1>Song Bird</h1>
+  </div>
+  <!-- partial for the log in sign up -->
+  <div ng-include="'partials/loginsignup'"></div>
+<!-- menu partial -->
+  <div ng-include="'partials/menu'"></div>
+
+  <div ng-include="ctrl.includePath">
+
+  </div>
+
+</div>
+  </body>
+</html>
