@@ -11,6 +11,21 @@ const seedData = [{
   title:'breathin',
   artist:'Ariana Grande',
   url:'https://www.youtube.com/embed/kN0iD0pI3o0'
+},
+{
+  title: 'Over Everything',
+  artist: 'Courtney Barnett & Kurt Vile',
+  url: 'https://www.youtube.com/embed/3KNsBCf34fQ'
+},
+{
+  title: 'History Eraser',
+  artist: 'Courtney Barnett',
+  url: 'https://www.youtube.com/embed/k6_G5PlEXdk'
+},
+{
+  title: 'How to Boil an Egg',
+  artist: 'Courtney Barnett',
+  url: 'https://www.youtube.com/embed/k6_G5PlEXdk'
 }]
 
 router.get('/', (req, res) => {

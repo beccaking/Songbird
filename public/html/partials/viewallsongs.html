@@ -1,6 +1,18 @@
-<h1>View All Songs</h1>
+<h1>All Songs</h1>
+<h4>Add a song to the database: </h4>
+<form ng-submit='ctrl.addSong()'>
+  <input type="text" ng-model="songTitle" placeholder="Song title">
+  <input type="text" ng-model="songArtist" placeholer="Artist">
+  <input type="text" ng-model="songUrl" placeholder="Youtube embed URL">
+  <span>Hint: click Share -> Embed on Youtube for the correct https address</span>
+  <input type="submit" value="Add Song">
+</form>
 <div ng-repeat="song in ctrl.songs">
-  <h3>Song: {{song.title}}</h3>
-  <h3>Artist: {{song.artist}}</h3>
-  <iframe width="560" height="315" src="{{song.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <span><b>Song: </b></span><span>{{song.title}}</span>
+  <br/>
+  <span><b>Artist: </b></span><span>{{song.artist}}</span>
+  <br/>
+  <iframe width="400" height="225" src="{{song.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <br/>
+  <button ng-if='(req.session.username)' ng-click='ctrl.addToCollection(song)'>Add to Collection</button>
 </div>
