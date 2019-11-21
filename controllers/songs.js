@@ -20,8 +20,10 @@ router.get('/', (req, res) => {
 })
 
 router.get('/seed', (req, res) => {
-  Songs.create(seedData, (error, createdSong) => {
-    res.json(createdSong)
+  Songs.remove({}, (error, deletedData) => {
+    Songs.create(seedData, (error, createdSong) => {
+      res.json(createdSong)
+    })
   })
 })
 
