@@ -21,7 +21,7 @@
   <br/>
   <button ng-if='(ctrl.loggedInUser)' ng-click='ctrl.toggleshow()'>Add to Collection</button>
   <div ng-if='ctrl.show' ng-repeat='collection in ctrl.collections'>
-    <button ng-click='ctrl.addToCollection(song, collection)'>Add to {{collection}}</button>
+    <button ng-click='ctrl.addToCollection(song, collection)'>Add to {{collection.name}}</button>
   </div>
 
 

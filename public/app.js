@@ -83,7 +83,7 @@ this.getCollections = function(){
     url:'/collections'
   }).then(response => {
     this.collections = response.data
-    console.log('current user: '+req.session.user);
+    console.log('current user: ' +this.loggedInUser.username);
     console.log(this.collections);
   }, error => {
     console.log(error);
@@ -97,7 +97,7 @@ this.getUserCollections = function(){
     url:'/collections/'+this.loggedInUser._id
   }).then(response => {
     this.collections = response.data
-    console.log('current user: '+req.session.user);
+    console.log('current user: '+ this.loggedInUser.username);
     console.log(this.collections);
   }, error => {
     console.log(error);
@@ -155,6 +155,7 @@ this.addSong = function(){
   })
 }
 
+//delete a song from the database (admin function)
 this.delete = function(song){
   $http({
     method:'DELETE',
@@ -166,6 +167,7 @@ this.delete = function(song){
   })
 }
 
+//edit a song in the database (admin function)
 this.edit = function(song){
   $http({
     method:'PUT',
@@ -180,6 +182,27 @@ this.edit = function(song){
     this.editedTitle=''
     this.editedArtist=''
     this.editedUrl=''
+  }, error => {
+    console.log(error)
+  })
+}
+
+//toggle to show collections
+this.show = false
+
+this.toggleshow = function(){
+  this.show = !this.show
+}
+
+//add song to collection
+this.addToCollection = function(song, collection){
+  $http({
+    method:'PUT',
+    url:'/collections/' + collection._id,
+    data: {songs: {title: song.title, artist: song.artist, url: song.url}}
+  }).then(response => {
+    console.log(collection)
+    this.show = false
   }, error => {
     console.log(error)
   })
