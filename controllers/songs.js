@@ -25,7 +25,7 @@ const seedData = [{
 {
   title: 'How to Boil an Egg',
   artist: 'Courtney Barnett',
-  url: 'https://www.youtube.com/embed/k6_G5PlEXdk'
+  url: 'https://www.youtube.com/embed/fA3PKsMOffU'
 }]
 
 router.get('/', (req, res) => {
@@ -39,6 +39,12 @@ router.get('/seed', (req, res) => {
     Songs.create(seedData, (error, createdSong) => {
       res.json(createdSong)
     })
+  })
+})
+
+router.post('/', (req, res) => {
+  Songs.create(req.body, (error, createdSong) => {
+    res.json(createdSong)
   })
 })
 
