@@ -1,0 +1,10 @@
+.nav {
+  display: flex;
+  width: 500px;
+  justify-content: space-around;
+}
+
+.nav *:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

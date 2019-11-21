@@ -23,6 +23,7 @@ this.loggedInUser = false;
             }
         }).then((response) => {
             this.loggedInUser = response.data;
+            this.getCollections();
         }, (error) => {
             console.log(error);
         })
@@ -39,10 +40,12 @@ this.loggedInUser = false;
         }).then((response) => {
             if(response.data.username){
                 this.loggedInUser = response.data;
+                this.getCollections();
             } else {
                 this.loginUsername = null;
                 this.loginPassword = null;
             }
+
         }, (error) => {
             console.log(error);
         })
@@ -72,5 +75,63 @@ this.loggedInUser = false;
     })
   }
 this.getSongs()
+
+// Collections Page ============
+this.getCollections = function(){
+  $http({
+    method:'GET',
+    url:'/collections'
+  }).then(response => {
+    this.collections = response.data
+    console.log('current user: '+req.session.user);
+    console.log(this.collections);
+  }, error => {
+    console.log(error);
+  })
+}
+
+//get only that user's collectionsSchemathis.getCollections = function(){
+this.getUserCollections = function(){
+  $http({
+    method:'GET',
+    url:'/collections/'+this.loggedInUser._id
+  }).then(response => {
+    this.collections = response.data
+    console.log('current user: '+req.session.user);
+    console.log(this.collections);
+  }, error => {
+    console.log(error);
+  })
+}
+
+//new collection
+this.newCollection = function(){
+  $http({
+    method:'POST',
+    url:'/collections',
+    data: {
+      name:this.name,
+      user:this.loggedInUser,
+    }
+  }).then(response => {
+    console.log(response.data);
+    this.getCollections();
+  }, error =>{
+    console.log(error);
+  })
+}
+
+//delete collection
+this.deleteCollection = function(collection){
+  $http({
+    method:"DELETE",
+    url:'/collections/'+collection._id
+  }).then(response => {
+    console.log('deleted ',collection);
+    this.getCollections();
+  }, error => {
+    console.log(error);
+  })
+}
 
 }]);
