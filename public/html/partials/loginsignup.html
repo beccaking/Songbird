@@ -1,7 +1,6 @@
-<button>Signup</button>
-<button>Login</button>
-
 <div ng-if="ctrl.loggedInUser === false">
+    <button>Signup</button>
+    <button>Login</button>
     <form ng-submit="ctrl.signup()">
         username: <input ng-model="ctrl.signupUsername"text" name="username"/><br/>
         password: <input ng-model="ctrl.signupPassword" type="password" name="password"/><br/>
