@@ -98,7 +98,21 @@ this.newCollection = function(){
     }
   }).then(response => {
     console.log(response.data);
+    this.getCollections();
   }, error =>{
+    console.log(error);
+  })
+}
+
+//delete collection
+this.deleteCollection = function(collection){
+  $http({
+    method:"DELETE",
+    url:'/collections/'+collection._id
+  }).then(response => {
+    console.log('deleted ',collection);
+    this.getCollections();
+  }, error => {
     console.log(error);
   })
 }

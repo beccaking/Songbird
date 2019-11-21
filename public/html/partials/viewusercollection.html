@@ -8,6 +8,7 @@
   </form>
 </div>
 
-<div ng-repeat='collection in ctrl.connections'>
-<h2>{{collection.name}}</h2>
+<div ng-repeat='collection in ctrl.collections'>
+  <h2>{{collection.name}} - <span ng-click="ctrl.deleteCollection(collection)">X</span></h2>
+
 </div>
