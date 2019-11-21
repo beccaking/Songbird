@@ -199,7 +199,7 @@ this.addToCollection = function(song, collection){
   $http({
     method:'PUT',
     url:'/collections/' + collection._id,
-    data: {songs: {title: song.title, artist: song.artist, url: song.url}}
+    data: {songs: {title: song.title, artist: song.artist, url: song.url}, collection.songs}
   }).then(response => {
     console.log(collection)
     this.show = false
