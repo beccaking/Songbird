@@ -134,4 +134,55 @@ this.deleteCollection = function(collection){
   })
 }
 
+//Add a song to the database
+this.addSong = function(){
+  $http({
+    method:'POST',
+    url:'/songs',
+    data: {
+      title: this.songTitle,
+      artist: this.songArtist,
+      url: this.songUrl
+    }
+  }).then(response => {
+    console.log(response)
+    this.getSongs()
+    this.songTitle=''
+    this.songArtist=''
+    this.songUrl=''
+  }, error => {
+    console.log(error)
+  })
+}
+
+this.delete = function(song){
+  $http({
+    method:'DELETE',
+    url:'/songs/' + song._id
+  }).then(response => {
+    this.getSongs()
+  }, error => {
+    console.log(error)
+  })
+}
+
+this.edit = function(song){
+  $http({
+    method:'PUT',
+    url:'/songs/' + song._id,
+    data: {
+      title: this.editedTitle,
+      artist: this.editedArtist,
+      url: this.editedUrl
+    }
+  }).then(response => {
+    this.getSongs()
+    this.editedTitle=''
+    this.editedArtist=''
+    this.editedUrl=''
+  }, error => {
+    console.log(error)
+  })
+}
+
 }]);

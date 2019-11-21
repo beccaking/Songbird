@@ -28,12 +28,14 @@ const seedData = [{
   url: 'https://www.youtube.com/embed/fA3PKsMOffU'
 }]
 
+//populates the index page with all the songs in the database
 router.get('/', (req, res) => {
   Songs.find({}, (error, foundSongs) => {
       res.json(foundSongs)
     })
 })
 
+//drops the existing collection and replaces it with seed data
 router.get('/seed', (req, res) => {
   Songs.remove({}, (error, deletedData) => {
     Songs.create(seedData, (error, createdSong) => {
@@ -42,18 +44,21 @@ router.get('/seed', (req, res) => {
   })
 })
 
+//adds a new song to the songs database
 router.post('/', (req, res) => {
   Songs.create(req.body, (error, createdSong) => {
     res.json(createdSong)
   })
 })
 
+//edits a song in the songs database
 router.put('/:id', (req, res) => {
   Songs.findByIdAndUpdate(req.params.id, req.body, {new:true}, (error, updatedSong) => {
     res.json(updatedSong)
   })
 })
 
+//deletes a song from the songs database
 router.delete('/:id', (req, res) => {
   Songs.findByIdAndRemove(req.params.id, (errror, deletedSong) => {
     res.json(deletedSong)
