@@ -26,5 +26,3 @@ router.get('/seed', (req, res) => {
 })
 
 module.exports = router
-
-//require controller in server.js

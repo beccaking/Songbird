@@ -7,7 +7,7 @@ app.controller('MainController', ['$http', function($http){
   this.includePath = 'partials/viewallsongs.html'
 
   this.changeInclude = (path) => {
-    this.includePath = 'partials/' + path + '.html'
+    this.includePath = 'html/partials/' + path + '.html'
   }
 
   this.getSongs = function(){
