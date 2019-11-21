@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const collectionsSchema = new mongoose.Schema({
     user: String,
-    songs: []
+    songs: [String]
 });
 
 const Collections = mongoose.model('Collection', collectionsSchema);
