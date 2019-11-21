@@ -16,5 +16,12 @@
   <br/>
   <iframe width="400" height="225" src="{{song.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   <br/>
-  <button ng-if='(req.session.user)' ng-click='ctrl.addToCollection(song)'>Add to Collection</button>
+  <button ng-if='(ctrl.loggedInUser)' ng-click='ctrl.addToCollection(song)'>Add to Collection</button>
+  <button ng-if='(ctrl.loggedInUser.username === "admin")' ng-click='ctrl.delete(song)'>Delete</button>
+  <form ng-if='(ctrl.loggedInUser.username === "admin")' ng-submit='ctrl.edit(song)'>
+    <input type="text" ng-model='editedTitle' placeholder='{{song.title}}'>
+    <input type="text" ng-model='editedArtist' placeholder='{{song.artist}}'>
+    <input type="text" ng-model='editedUrl' placeholder='{{song.url}}'>
+    <input type="submit" value="Edit Song">
+  </form>
 </div>

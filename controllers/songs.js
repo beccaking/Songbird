@@ -48,4 +48,16 @@ router.post('/', (req, res) => {
   })
 })
 
+router.put('/:id', (req, res) => {
+  Songs.findByIdAndUpdate(req.params.id, req.body, {new:true}, (error, updatedSong) => {
+    res.json(updatedSong)
+  })
+})
+
+router.delete('/:id', (req, res) => {
+  Songs.findByIdAndRemove(req.params.id, (errror, deletedSong) => {
+    res.json(deletedSong)
+  })
+})
+
 module.exports = router
