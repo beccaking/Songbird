@@ -9,6 +9,14 @@ router.get('/', (req, res) => {
   })
 });
 
+//show users collections
+router.get('/:userid', (req, res) => {
+  Collections.find({user:req.params.userid}, (error, foundCollections) => {
+    res.json(foundCollections);
+    console.log(foundCollections);
+  })
+})
+
 //create a new collection
 router.post('/', (req, res) => {
   Collections.create(req.body, (error, createdCollection) => {

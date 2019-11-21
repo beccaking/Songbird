@@ -23,6 +23,7 @@ this.loggedInUser = false;
             }
         }).then((response) => {
             this.loggedInUser = response.data;
+            this.getCollections();
         }, (error) => {
             console.log(error);
         })
@@ -39,10 +40,12 @@ this.loggedInUser = false;
         }).then((response) => {
             if(response.data.username){
                 this.loggedInUser = response.data;
+                this.getCollections();
             } else {
                 this.loginUsername = null;
                 this.loginPassword = null;
             }
+
         }, (error) => {
             console.log(error);
         })
@@ -80,12 +83,26 @@ this.getCollections = function(){
     url:'/collections'
   }).then(response => {
     this.collections = response.data
+    console.log('current user: '+req.session.user);
     console.log(this.collections);
   }, error => {
     console.log(error);
   })
 }
-this.getCollections();
+
+//get only that user's collectionsSchemathis.getCollections = function(){
+this.getUserCollections = function(){
+  $http({
+    method:'GET',
+    url:'/collections/'+this.loggedInUser._id
+  }).then(response => {
+    this.collections = response.data
+    console.log('current user: '+req.session.user);
+    console.log(this.collections);
+  }, error => {
+    console.log(error);
+  })
+}
 
 //new collection
 this.newCollection = function(){
