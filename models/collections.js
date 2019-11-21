@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const collectionsSchema = new mongoose.Schema({
+    name: String,
     user: String,
     songs: [String]
 });

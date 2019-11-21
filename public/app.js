@@ -73,4 +73,18 @@ this.loggedInUser = false;
   }
 this.getSongs()
 
+// Collections Page ============
+this.getCollections = function(){
+  $http({
+    method:'GET',
+    url:'/collections'
+  }).then(response => {
+    this.collections = response.data
+    console.log(this.collections);
+  }, error => {
+    console.log(error);
+  })
+}
+this.getCollections();
+
 }]);
