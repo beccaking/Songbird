@@ -1,1 +1,9 @@
 <h1>View All Songs</h1>
+<div ng-repeat="song in ctrl.songs">
+  <h3>Song: {{song.title}}</h3>
+  <h3>Artist: {{song.artist}}</h3>
+  <iframe width="560" height="315" src="{{song.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+//add .config line to to app.js
+//define ctrl.songs in app.js
