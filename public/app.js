@@ -1,4 +1,6 @@
-const app = angular.module('MyApp', []);
+const app = angular.module('MyApp', []).config(function($sceProvider){
+  $sceProvider.enabled(false)
+});
 
 app.controller('MainController', ['$http', function($http){
 
@@ -6,6 +8,17 @@ app.controller('MainController', ['$http', function($http){
 
   this.changeInclude = (path) => {
     this.includePath = 'partials/' + path + '.html'
+  }
+
+  this.getSongs = function(){
+    $http({
+      method:'GET',
+      url:'/songs'
+    }).then(response => {
+      this.songs = response.data
+    }, error => {
+      console.log(error)
+    })
   }
 
 }]);
