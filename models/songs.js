@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const songSchema = new mongoose.Schema({
-  title:,
-  artist:,
-  link:
+  title: String,
+  artist: String,
+  link: String
 })
 
 const Song = mongoose.model('Song', songSchema)
