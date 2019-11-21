@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const collectionsController = require('./controllers/collections.js');
 const songsController = require('./controllers/songs.js');
-const usersController = require('./controllers/users.js');
+const songbirdsController = require('./controllers/songbirds.js');
 const sessionController = require('./controllers/sessions.js');
 const db = mongoose.connection;
 const app = express();
@@ -36,5 +36,5 @@ app.use(session({
 }))
 app.use('/collections', collectionsController);
 app.use('/songs', songsController);
-app.use('/users', usersController);
+app.use('/songbirds', songbirdsController);
 app.use('/sessions', sessionController);
