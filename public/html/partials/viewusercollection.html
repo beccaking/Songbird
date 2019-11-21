@@ -1,6 +1,13 @@
     <!--create new collection (on the user collection page, but when they click something it will toggle show) -->
 <h1>View User's Collections Here</h1>
 
+<div class="new-collection">
+  <form ng-submit="ctrl.newCollection()">
+    <input ng-model='ctrl.name' type="text" placeholder='Collection Name'>
+    <input type="submit" value="Create New Collection">
+  </form>
+</div>
+
 <div ng-repeat='collection in ctrl.connections'>
 <h2>{{collection.name}}</h2>
 </div>

@@ -87,4 +87,20 @@ this.getCollections = function(){
 }
 this.getCollections();
 
+//new collection
+this.newCollection = function(){
+  $http({
+    method:'POST',
+    url:'/collections',
+    data: {
+      name:this.name,
+      user:this.loggedInUser,
+    }
+  }).then(response => {
+    console.log(response.data);
+  }, error =>{
+    console.log(error);
+  })
+}
+
 }]);
