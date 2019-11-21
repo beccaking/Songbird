@@ -1,15 +1,15 @@
 <button>Signup</button>
 <button>Login</button>
 
-<div class="">
-    <form>
-        username: <input type="text" name="username"/><br/>
-        password: <input type="password" name="password"/><br/>
+<div ng-if="ctrl.loggedInUser === false">
+    <form ng-submit="ctrl.signup()">
+        username: <input ng-model="ctrl.signupUsername"text" name="username"/><br/>
+        password: <input ng-model="ctrl.signupPassword" type="password" name="password"/><br/>
         <input type="submit" value="Signup">
     </form>
-    <form>
-        username: <input type="text" name="username"/><br/>
-        password: <input type="password" name="password"/><br/>
+    <form ng-submit="ctrl.login()">
+        username: <input ng-model="ctrl.loginUsername" type="text" name="username"/><br/>
+        password: <input ng-model="ctrl.loginPassword" type="password" name="password"/><br/>
         <input type="submit" value="Login">
     </form>
     <button>Cancel</button>

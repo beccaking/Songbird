@@ -4,7 +4,7 @@ const router = express.Router();
 const Songbird = require('../models/songbirds.js')
 
 router.post('/', (req, res) => {
-    Songbird.findOne({username:req.session.username}, (error, foundUser) => {
+    Songbird.findOne({username:req.body.username}, (error, foundUser) => {
         if(foundUser === null){
             res.json({
                 message:'user not found'
