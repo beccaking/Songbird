@@ -16,12 +16,14 @@ router.post('/', (req, res) => {
   })
 })
 
+// delete a collection
 router.delete('/:id', (req, res) => {
   Collections.findByIdAndRemove(req.params.id, (error, deletedCollection) => {
     res.json(deletedCollection)
   })
 })
 
+// update a collection
 router.put('/:id', (req, res) => {
   Collections.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedCollection) => {
     res.json(updatedCollection)
