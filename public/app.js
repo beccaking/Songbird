@@ -24,7 +24,7 @@ this.loggedInUser = false;
         }).then((response) => {
             this.loggedInUser = response.data;
             //the user doesn't have any of their own collections if they just signed up, so diplay all collections
-            this.getCollections();
+            this.getUserCollections();
         }, (error) => {
             console.log(error);
         })
@@ -114,7 +114,6 @@ this.getCollections = function(){
   })
 }
 
-this.getCollections();
 //get only that user's collectionsSchemathis.getCollections = function(){
 this.getUserCollections = function(){
   $http({
@@ -148,7 +147,7 @@ this.newCollection = function(){
     }
   }).then(response => {
     console.log(response.data);
-    this.getCollections();
+    this.getUserCollections();
   }, error =>{
     console.log(error);
   })
@@ -161,7 +160,7 @@ this.deleteCollection = function(collection){
     url:'/collections/'+collection._id
   }).then(response => {
     console.log('deleted ',collection);
-    this.getCollections();
+    this.getUserCollections();
   }, error => {
     console.log(error);
   })
@@ -182,7 +181,6 @@ this.addSong = function(){
   }).then(response => {
     console.log(response)
     this.getSongs()
-    this.getCollections();
     this.songTitle=''
     this.songArtist=''
     this.songUrl=''
@@ -255,7 +253,7 @@ this.addToNewCollection = function(song){
     alert(`${song.title} added to ${this.collectionName}`)
     this.indexToShow = null
     this.collectionName=''
-    this.getCollections();
+    this.getUserCollections();
   }, error => {
     console.log(error)
   })
