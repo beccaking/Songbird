@@ -1,15 +1,19 @@
 <div ng-if="ctrl.loggedInUser === false">
     <button ng-click="ctrl.toggleSignup()">Signup</button>
-    <button>Login</button>
+    <button ng-click="ctrl.toggleLogin()">Login</button>
+    <div ng-if="ctrl.signup !== false">
     <form ng-submit="ctrl.signup()">
         username: <input ng-model="ctrl.signupUsername"text" name="username"/><br/>
         password: <input ng-model="ctrl.signupPassword" type="password" name="password"/><br/>
         <input type="submit" value="Signup">
     </form>
+    <button ng-click="ctrl.toggleSignup()">Cancel</button>
+    </div>
+    <div ng-if="ctrl.login !== false">
     <form ng-submit="ctrl.login()">
         username: <input ng-model="ctrl.loginUsername" type="text" name="username"/><br/>
         password: <input ng-model="ctrl.loginPassword" type="password" name="password"/><br/>
         <input type="submit" value="Login">
     </form>
-    <button>Cancel</button>
+    <button ng-click="ctrl.toggleLogin()">Cancel</button>
 </div>

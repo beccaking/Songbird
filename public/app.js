@@ -51,6 +51,15 @@ this.loggedInUser = false;
         })
     }
 
+    this.signup = false;
+    this.login = false;
+    this.toggleSignup = () => {
+        this.signup = !this.signup;
+    }
+    this.toggleLogin = () => {
+        this.login = !this.login;
+    }
+
     $http({
         method:'GET',
         url:'/sessions'
