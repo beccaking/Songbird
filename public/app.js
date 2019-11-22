@@ -128,15 +128,12 @@ let songsToShow = []
 this.collectionSongs = []
 this.showSongs = function(collection){
     this.collectionSongs = []
-    console.log('this.showSongs is running');
   $http({
     method:'GET',
     url:'/collections/songs/'+ collection._id
   }).then(response => {
-    songsToShow = response.data
-    console.log('songsToShow: ', songsToShow);
+    songsToShow = response.data;
     this.showSongs2(songsToShow);
-    // this.collectionSongs = response
   }, error => {
     console.log(error)
   })
@@ -147,15 +144,13 @@ this.showSongs = function(collection){
 this.showSongs2 = function(songsArray){
     console.log('this.showSongs2 is running');
   for(let i = 0; i < songsArray.length; i++){
-    // console.log(songsArray[i]);
     $http({
       method:'GET',
       url:'/songs/'+songsArray[i]
   }).then((response) => {
-      // console.log('this.showSongs2:', response.data);
       this.collectionSongs.push(response.data);
   })
-} // closes for loop
+}
 }
 
 //get only that user's collections
@@ -165,8 +160,6 @@ this.getUserCollections = function(){
     url:'/collections/'+this.loggedInUser._id
   }).then(response => {
     this.collections = response.data
-    // console.log('current user: '+ this.loggedInUser._id);
-    // console.log(response.data);
   }, error => {
     console.log(error);
   })
