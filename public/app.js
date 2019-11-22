@@ -226,7 +226,7 @@ this.edit = function(song){
 //add to collections buttons not showing by default
 this.indexToShow = null
 
-//add song to collection
+//add a song to an existing collection
 this.addToCollection = function(song, collection){
   $http({
     method:'PUT',
@@ -251,8 +251,9 @@ this.addToNewCollection = function(song){
       songs: [song._id]
     }
   }).then(response =>{
+    console.log(response.data)
     alert(`${song.title} added to ${this.collectionName}`)
-    ctrl.indexToShow = null
+    this.indexToShow = null
     this.collectionName=''
     this.getCollections();
   }, error => {

@@ -10,6 +10,7 @@
 <span>Hint: click Share -> Embed on Youtube for the correct https address</span>
 <br/>
 <br/>
+<!-- Add a song -->
 
 <!-- List of songs -->
 <div ng-repeat="song in ctrl.songs">
@@ -19,6 +20,9 @@
   <br/>
   <iframe width="400" height="225" src="{{song.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   <br/>
+  <!-- List of songs -->
+
+  <!-- Add to collection buttons -->
   <button ng-if='(ctrl.loggedInUser) && (ctrl.indexToShow !== $index)' ng-click='ctrl.indexToShow = $index'>Add to Collection</button>
   <button ng-if='(ctrl.loggedInUser) && (ctrl.indexToShow === $index)' ng-click='ctrl.indexToShow = null'>Add to Collection</button>
     <div ng-if='($index === ctrl.indexToShow)'>
@@ -30,6 +34,7 @@
       <input type='text' ng-model='ctrl.collectionName' placeholder='Collection name'>
       <input type='submit' value='Add to a new collection'>
     </form>
+<!-- Add to collection buttons -->
 
 
 <!-- admin functions -->
