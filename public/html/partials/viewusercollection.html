@@ -1,4 +1,5 @@
     <!--create new collection (on the user collection page, but when they click something it will toggle show) -->
+<div ng-if="ctrl.loggedInUser !== false">
 <h1>View User's Collections Here</h1>
 
 <div class="new-collection">
@@ -6,6 +7,7 @@
     <input ng-model='ctrl.name' type="text" placeholder='Collection Name' required>
     <input type="submit" value="Create New Collection">
   </form>
+</div>
 </div>
 
 <div ng-repeat='collection in ctrl.collections'>

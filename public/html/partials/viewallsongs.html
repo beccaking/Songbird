@@ -1,5 +1,6 @@
 <h1>All Songs</h1>
 <!-- Add a song -->
+<div ng-if="ctrl.loggedInUser !== false">
 <h4>Add a song to the database: </h4>
 <form ng-submit='ctrl.addSong()'>
   <input type="text" ng-model="ctrl.songTitle" placeholder="Song title" required>
@@ -10,6 +11,7 @@
 <span>Hint: click Share -> Embed on Youtube for the correct https address</span>
 <br/>
 <br/>
+</div>
 <!-- Add a song -->
 
 <!-- List of songs -->
