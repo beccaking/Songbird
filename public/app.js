@@ -128,6 +128,14 @@ this.getUserCollections = function(){
   })
 }
 
+// show the songs in a collection - DOESN'T WORK YET!
+this.showSongs = function(collection){
+  $http({
+    method:'GET',
+    url:'/songs/'+this.collections
+  })
+}
+
 //new collection
 this.newCollection = function(){
   $http({
@@ -157,6 +165,8 @@ this.deleteCollection = function(collection){
     console.log(error);
   })
 }
+
+// Songs ================
 
 //Add a song to the database
 this.addSong = function(){

@@ -18,7 +18,7 @@ router.get('/:userid', (req, res) => {
   })
 })
 
-//show the songs in a collection
+//show the songs in a collection -- not sure if this works yet.
 router.get('/:collectionid', (req, res) => {
   Collections.findById(req.params.collectionid, (error, foundCollection) => {
     for(let i=0; i<foundCollection.songs.length; i++){
@@ -26,7 +26,8 @@ router.get('/:collectionid', (req, res) => {
         res.json(foundSongs)
       })
     }
-  })})
+  })
+})
 
 //create a new collection
 router.post('/', (req, res) => {
