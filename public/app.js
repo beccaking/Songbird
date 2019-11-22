@@ -51,13 +51,13 @@ this.loggedInUser = false;
         })
     }
 
-    this.signup = false;
-    this.login = false;
+    this.signupButton = false;
+    this.loginButton = false;
     this.toggleSignup = () => {
-        this.signup = !this.signup;
+        this.signupButton = !this.signupButton;
     }
     this.toggleLogin = () => {
-        this.login = !this.login;
+        this.loginButton = !this.loginButton;
     }
 
     $http({
