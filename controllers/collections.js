@@ -22,14 +22,8 @@ router.get('/:userid', (req, res) => {
 router.get('/songs/:collectionid', (req, res) => {
   let songs = []
   Collections.findById(req.params.collectionid, (error, foundCollection) => {
-    for(let i=0; i<foundCollection.songs.length; i++){
-        Songs.findById(foundCollection.songs[i], (error, foundSong) => {
-          console.log(`this song is in the collection: ${foundSong}`)
-          songs.push(foundSong)
-          })
-       }
-    console.log(`this collection is being returned ${songs}`)
-    res.json(songs)
+    console.log(foundCollection.songs);
+    res.json(foundCollection.songs)
   })
 })
 
