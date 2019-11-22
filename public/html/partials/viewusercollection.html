@@ -3,12 +3,14 @@
 
 <div class="new-collection">
   <form ng-submit="ctrl.newCollection()">
-    <input ng-model='ctrl.name' type="text" placeholder='Collection Name'>
+    <input ng-model='ctrl.name' type="text" placeholder='Collection Name' required>
     <input type="submit" value="Create New Collection">
   </form>
 </div>
 
 <div ng-repeat='collection in ctrl.collections'>
   <h2>{{collection.name}} - <span ng-click="ctrl.deleteCollection(collection)">X</span></h2>
-
+  <div ng-repeat='song in collection.songs track by $index'>
+{{song}}
+  </div>
 </div>
