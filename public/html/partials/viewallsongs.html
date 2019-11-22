@@ -19,10 +19,17 @@
   <br/>
   <iframe width="400" height="225" src="{{song.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   <br/>
-  <button ng-if='(ctrl.loggedInUser)' ng-click='ctrl.toggleshow()'>Add to Collection</button>
-  <div ng-if='ctrl.show' ng-repeat='collection in ctrl.collections'>
-    <button ng-click='ctrl.addToCollection(song, collection)'>Add to {{collection.name}}</button>
-  </div>
+  <button ng-if='(ctrl.loggedInUser) && (ctrl.indexToShow !== $index)' ng-click='ctrl.indexToShow = $index'>Add to Collection</button>
+  <button ng-if='(ctrl.loggedInUser) && (ctrl.indexToShow === $index)' ng-click='ctrl.indexToShow = null'>Add to Collection</button>
+    <div ng-if='($index === ctrl.indexToShow)'>
+      <div ng-if='(ctrl.collections.length !== 0)' ng-repeat='collection in ctrl.collections'>
+        <button ng-click='ctrl.addToCollection(song, collection)'>Add to {{collection.name}}</button>
+      </div>
+    </div>
+    <form ng-if='($index === ctrl.indexToShow)' ng-submit='ctrl.addToNewCollection(song)'>
+      <input type='text' ng-model='ctrl.collectionName' placeholder='Collection name'>
+      <input type='submit' value='Add to a new collection'>
+    </form>
 
 
 <!-- admin functions -->
