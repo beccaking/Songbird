@@ -36,6 +36,26 @@
     </form>
 <!-- Add to collection buttons -->
 
+<!-- this.checkForDuplicates = function(song, collection) {
+      for(i=0;i<collection.songs.length;i++){
+          if(song._id === collection.songs[i]._id){
+            return true
+          } else {
+          return false
+          }
+        }
+      }
+
+    within addToCollection:
+    if(this.checkForDuplicates(song, collection)){
+      collection.songs = response.data
+      this.indexToShow = null
+    } else {
+      alert(`${song.title} already in collection`)
+    }
+
+
+    -->
 
 <!-- admin functions -->
   <button ng-if='(ctrl.loggedInUser.username === "admin")' ng-click='ctrl.delete(song)'>Delete</button>
