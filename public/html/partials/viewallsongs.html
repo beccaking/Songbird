@@ -36,7 +36,6 @@
     </form>
 <!-- Add to collection buttons -->
 
-
 <!-- admin functions -->
   <button ng-if='(ctrl.loggedInUser.username === "admin")' ng-click='ctrl.delete(song)'>Delete</button>
   <form ng-if='(ctrl.loggedInUser.username === "admin")' ng-submit='ctrl.edit(song)'>

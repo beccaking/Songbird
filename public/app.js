@@ -114,7 +114,41 @@ this.getCollections = function(){
   })
 }
 
-//get only that user's collectionsSchemathis.getCollections = function(){
+// show the songs in a collection - DOESN'T WORK YET!
+//when a user clicks the collection name
+// we should first view the song IDs in that collection
+// then we should look up the song info by song ID
+let songsToShow = []
+this.showSongs = function(collection){
+  $http({
+    method:'GET',
+    url:'/collections/songs/'+ collection._id
+  }).then(response => {
+    songsToShow = response.data
+    // console.log(response);
+    console.log('songsToShow: ', songsToShow);
+    this.showSongs2(songsToShow)
+    // this.collectionSongs = response
+  }, error => {
+    console.log(error)
+  })
+}
+
+//second part of the show songs in a collection request
+this.showSongs2 = function(songsToShow){
+  for(let i=0; i<songsToShow.length; i++){
+    console.log('songs to show length: ', songsToShow.length);
+    console.log('i',i);
+    $http({
+      method:'GET',
+      url:'/songs/'+songsToShow[i]
+    }).then(response => {
+      console.log('show songs 2:', response);
+    })
+  }
+}
+
+//get only that user's collections
 this.getUserCollections = function(){
   $http({
     method:'GET',
@@ -125,14 +159,6 @@ this.getUserCollections = function(){
     // console.log(this.collections);
   }, error => {
     console.log(error);
-  })
-}
-
-// show the songs in a collection - DOESN'T WORK YET!
-this.showSongs = function(collection){
-  $http({
-    method:'GET',
-    url:'/songs/'+this.collections
   })
 }
 
@@ -148,6 +174,7 @@ this.newCollection = function(){
   }).then(response => {
     console.log(response.data);
     this.getUserCollections();
+    this.name='';
   }, error =>{
     console.log(error);
   })
@@ -224,18 +251,35 @@ this.edit = function(song){
 //add to collections buttons not showing by default
 this.indexToShow = null
 
+//check to see if a collection already has a song
+this.checkForDuplicates = function(song, collection){
+  let unique = true
+  for(i=0;i<collection.songs.length;i++){
+    if(song._id === collection.songs[i]._id){
+      unique = false
+    }
+  }
+  return unique
+}
+
 //add a song to an existing collection
 this.addToCollection = function(song, collection){
-  $http({
-    method:'PUT',
-    url:'/collections/' + collection._id,
-    data: [song._id, collection.songs]
-  }).then(response => {
-    collection.songs = response.data
-    this.indexToShow = null
-  }, error => {
-    console.log(error)
-  })
+  if(this.checkForDuplicates(song, collection)){
+      $http({
+        method:'POST',
+        url:'/collections/addsong/' + collection._id,
+        data: [song._id, collection.songs]
+      }).then(response => {
+          alert(`${song.title} added to ${collection.name}`)
+          collection.songs = response.data
+          this.indexToShow = null
+        }, error => {
+        console.log(error)
+      })
+      this.getUserCollections();
+    } else {
+    alert(`${song.title} already in collection`)
+  }
 }
 
 //add a song to a new collection

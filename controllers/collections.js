@@ -17,15 +17,13 @@ router.get('/:userid', (req, res) => {
     console.log(foundCollections);
   })
 })
-
-//show the songs in a collection -- not sure if this works yet.
-router.get('/:collectionid', (req, res) => {
+//
+// show the songs in a collection -- doesn't work yet
+router.get('/songs/:collectionid', (req, res) => {
+  let songs = []
   Collections.findById(req.params.collectionid, (error, foundCollection) => {
-    for(let i=0; i<foundCollection.songs.length; i++){
-      Songs.findById(foundCollection.songs[i], (error, foundSongs) => {
-        res.json(foundSongs)
-      })
-    }
+    console.log(foundCollection.songs);
+    res.json(foundCollection.songs)
   })
 })
 
@@ -47,6 +45,16 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   Collections.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedCollection) => {
     res.json(updatedCollection)
+  })
+})
+
+// add a song to a collection
+router.post('/addsong/:id', (req, res) => {
+  Collections.findById(req.params.id, (err, foundCollection) => {
+    // console.log(req.body[0]);
+    foundCollection.songs.push(req.body[0]);
+    foundCollection.save()
+    res.json(foundCollection)
   })
 })
 
