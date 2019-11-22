@@ -148,6 +148,7 @@ this.newCollection = function(){
   }).then(response => {
     console.log(response.data);
     this.getUserCollections();
+    this.name='';
   }, error =>{
     console.log(error);
   })

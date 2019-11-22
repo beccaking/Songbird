@@ -53,12 +53,9 @@ router.put('/:id', (req, res) => {
 // add a song to a collection
 router.post('/addsong/:id', (req, res) => {
   Collections.findById(req.params.id, (err, foundCollection) => {
-    console.log('found collection: ', foundCollection);
     foundCollection.songs.push(req.body[0]);
     foundCollection.save()
     res.json(foundCollection)
-    console.log('logging the req.body of post request', req.body[0]);
-
   })
 })
 
