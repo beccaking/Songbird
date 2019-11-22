@@ -2,9 +2,9 @@
 <!-- Add a song -->
 <h4>Add a song to the database: </h4>
 <form ng-submit='ctrl.addSong()'>
-  <input type="text" ng-model="ctrl.songTitle" placeholder="Song title">
-  <input type="text" ng-model="ctrl.songArtist" placeholder="Artist">
-  <input type="text" ng-model="ctrl.songUrl" placeholder="Youtube embed URL">
+  <input type="text" ng-model="ctrl.songTitle" placeholder="Song title" required>
+  <input type="text" ng-model="ctrl.songArtist" placeholder="Artist" required>
+  <input type="text" ng-model="ctrl.songUrl" placeholder="Youtube embed URL" required>
   <input type="submit" value="Add Song">
 </form>
 <span>Hint: click Share -> Embed on Youtube for the correct https address</span>
