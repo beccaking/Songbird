@@ -225,19 +225,35 @@ this.edit = function(song){
 //add to collections buttons not showing by default
 this.indexToShow = null
 
+this.checkForDuplicates = function(song, collection){
+  for(i=0;i<collection.songs.length;i++){
+    if(song._id === collection.songs[i]._id){
+      return true
+    } else {
+      return false
+    }
+  }
+}
+
 //add a song to an existing collection
 this.addToCollection = function(song, collection){
-  $http({
-    method:'POST',
-    url:'/collections/addsong/' + collection._id,
-    data: [song._id, collection.songs]
-  }).then(response => {
-    alert(`${song.title} added to ${this.collectionName}`)
-    collection.songs = response.data
-    this.indexToShow = null
-  }, error => {
-    console.log(error)
-  })
+  if(this.checkForDuplicates(song, collection)){
+    $http({
+      method:'POST',
+      url:'/collections/addsong/' + collection._id,
+      data: [song._id, collection.songs]
+    }).then(response => {
+        alert(`${song.title} added to ${collection.name}`)
+        collection.songs = response.data
+        this.indexToShow = null
+      }, error => {
+      console.log(error)
+    })
+    this.getUserCollections();
+  } else {
+    alert(`${song.title} already in collection`)
+    console.log(`${song.title} already in collection`)
+  }
 }
 
 //add a song to a new collection
