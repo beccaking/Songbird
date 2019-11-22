@@ -114,7 +114,19 @@ this.getCollections = function(){
   })
 }
 
-//get only that user's collectionsSchemathis.getCollections = function(){
+// show the songs in a collection - DOESN'T WORK YET!
+this.showSongs = function(collection){
+  $http({
+    method:'GET',
+    url:'/collections/songs/'+ collection._id
+  }).then(response => {
+    this.collectionSongs = response
+  }, error => {
+    console.log(error)
+  })
+}
+
+//get only that user's collections
 this.getUserCollections = function(){
   $http({
     method:'GET',
@@ -125,14 +137,6 @@ this.getUserCollections = function(){
     // console.log(this.collections);
   }, error => {
     console.log(error);
-  })
-}
-
-// show the songs in a collection - DOESN'T WORK YET!
-this.showSongs = function(collection){
-  $http({
-    method:'GET',
-    url:'/songs/'+this.collections
   })
 }
 
@@ -225,34 +229,34 @@ this.edit = function(song){
 //add to collections buttons not showing by default
 this.indexToShow = null
 
+//check to see if a collection already has a song
 this.checkForDuplicates = function(song, collection){
+  let unique = true
   for(i=0;i<collection.songs.length;i++){
     if(song._id === collection.songs[i]._id){
-      return true
-    } else {
-      return false
+      unique = false
     }
   }
+  return unique
 }
 
 //add a song to an existing collection
 this.addToCollection = function(song, collection){
   if(this.checkForDuplicates(song, collection)){
-    $http({
-      method:'POST',
-      url:'/collections/addsong/' + collection._id,
-      data: [song._id, collection.songs]
-    }).then(response => {
-        alert(`${song.title} added to ${collection.name}`)
-        collection.songs = response.data
-        this.indexToShow = null
-      }, error => {
-      console.log(error)
-    })
-    this.getUserCollections();
-  } else {
+      $http({
+        method:'POST',
+        url:'/collections/addsong/' + collection._id,
+        data: [song._id, collection.songs]
+      }).then(response => {
+          alert(`${song.title} added to ${collection.name}`)
+          collection.songs = response.data
+          this.indexToShow = null
+        }, error => {
+        console.log(error)
+      })
+      this.getUserCollections();
+    } else {
     alert(`${song.title} already in collection`)
-    console.log(`${song.title} already in collection`)
   }
 }
 

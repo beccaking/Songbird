@@ -9,8 +9,15 @@
 </div>
 
 <div ng-repeat='collection in ctrl.collections'>
-  <h2>{{collection.name}} - <span ng-click="ctrl.deleteCollection(collection)">X</span></h2>
-  <div ng-repeat='song in collection.songs track by $index'>
-{{song}}
+  <h2><span ng-click='ctrl.showSongs(collection)' >{{collection.name}}</span> - <span ng-click="ctrl.deleteCollection(collection)">X</span></h2>
+  <div ng-repeat='song in ctrl.collectionSongs track by $index'>
+      <span><b>Song: </b></span>
+      <span>{{song.title}}</span>
+      <br/>
+      <span><b>Artist: </b></span>
+      <span>{{song.artist}}</span>
+      <br/>
+      <iframe width="400" height="225" src="{{song.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <br/>
   </div>
 </div>
