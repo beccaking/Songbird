@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Collections = require('../models/collections.js')
+const Songs = require('../models/songs.js')
 
 //show all collections
 router.get('/', (req, res) => {
@@ -16,6 +17,16 @@ router.get('/:userid', (req, res) => {
     console.log(foundCollections);
   })
 })
+
+//show the songs in a collection
+router.get('/:collectionid', (req, res) => {
+  Collections.findById(req.params.collectionid, (error, foundCollection) => {
+    for(let i=0; i<foundCollection.songs.length; i++){
+      Songs.findById(foundCollection.songs[i], (error, foundSongs) => {
+        res.json(foundSongs)
+      })
+    }
+  })})
 
 //create a new collection
 router.post('/', (req, res) => {
