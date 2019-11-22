@@ -60,6 +60,19 @@ this.loggedInUser = false;
         this.loginButton = !this.loginButton;
     }
 
+    this.logout = () => {
+        $http({
+            method:'DELETE',
+            url:'/sessions'
+        }).then((response) => {
+            this.loggedInUser = false;
+            this.loginUsername = null;
+            this.loginPassword = null;
+        }, (error) => {
+            console.log(error);
+        })
+    }
+
     $http({
         method:'GET',
         url:'/sessions'

@@ -1,4 +1,7 @@
 <div class="nav">
   <h3 ng-click="ctrl.changeInclude('viewallsongs')">View All Songs</h3>
   <h3 ng-click="ctrl.changeInclude('viewusercollection')">View User's Collections</h3>
+  <h3
+  ng-if="ctrl.loggedInUser !== false"
+  ng-click="ctrl.logout()">Logout</h3>
 </div>
