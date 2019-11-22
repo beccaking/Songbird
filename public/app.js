@@ -83,7 +83,7 @@ this.getCollections = function(){
     url:'/collections'
   }).then(response => {
     this.collections = response.data
-    console.log('current user: '+req.session.user);
+    console.log('current user: ' +this.loggedInUser.username);
     console.log(this.collections);
   }, error => {
     console.log(error);
@@ -97,7 +97,7 @@ this.getUserCollections = function(){
     url:'/collections/'+this.loggedInUser._id
   }).then(response => {
     this.collections = response.data
-    console.log('current user: '+req.session.user);
+    console.log('current user: '+ this.loggedInUser.username);
     console.log(this.collections);
   }, error => {
     console.log(error);
@@ -131,6 +131,80 @@ this.deleteCollection = function(collection){
     this.getCollections();
   }, error => {
     console.log(error);
+  })
+}
+
+//Add a song to the database
+this.addSong = function(){
+  $http({
+    method:'POST',
+    url:'/songs',
+    data: {
+      title: this.songTitle,
+      artist: this.songArtist,
+      url: this.songUrl
+    }
+  }).then(response => {
+    console.log(response)
+    this.getSongs()
+    this.songTitle=''
+    this.songArtist=''
+    this.songUrl=''
+  }, error => {
+    console.log(error)
+  })
+}
+
+//delete a song from the database (admin function)
+this.delete = function(song){
+  $http({
+    method:'DELETE',
+    url:'/songs/' + song._id
+  }).then(response => {
+    this.getSongs()
+  }, error => {
+    console.log(error)
+  })
+}
+
+//edit a song in the database (admin function)
+this.edit = function(song){
+  $http({
+    method:'PUT',
+    url:'/songs/' + song._id,
+    data: {
+      title: this.editedTitle,
+      artist: this.editedArtist,
+      url: this.editedUrl
+    }
+  }).then(response => {
+    this.getSongs()
+    this.editedTitle=''
+    this.editedArtist=''
+    this.editedUrl=''
+  }, error => {
+    console.log(error)
+  })
+}
+
+//toggle to show collections
+this.show = false
+
+this.toggleshow = function(){
+  this.show = !this.show
+}
+
+//add song to collection
+this.addToCollection = function(song, collection){
+  $http({
+    method:'PUT',
+    url:'/collections/' + collection._id,
+    data: {songs: {title: song.title, artist: song.artist, url: song.url}, collection.songs}
+  }).then(response => {
+    console.log(collection)
+    this.show = false
+  }, error => {
+    console.log(error)
   })
 }
 
