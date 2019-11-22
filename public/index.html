@@ -16,7 +16,7 @@
   <!-- partial for the log in sign up -->
   <div ng-include="'html/partials/loginsignup.html'"></div>
 <!-- menu partial -->
-  <div ng-include="'html/partials/menu.html'"></div>
+  <div ng-if='(ctrl.loggedInUser !== false)' ng-include="'html/partials/menu.html'"></div>
 
   <div ng-include="ctrl.includePath">
 

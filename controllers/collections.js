@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Collections = require('../models/collections.js')
+const Songs = require('../models/songs.js')
 
 //show all collections
 router.get('/', (req, res) => {
@@ -8,6 +9,25 @@ router.get('/', (req, res) => {
     res.json(foundCollections)
   })
 });
+
+//show users collections
+router.get('/:userid', (req, res) => {
+  Collections.find({user:req.params.userid}, (error, foundCollections) => {
+    res.json(foundCollections);
+    console.log(foundCollections);
+  })
+})
+
+//show the songs in a collection -- not sure if this works yet.
+router.get('/:collectionid', (req, res) => {
+  Collections.findById(req.params.collectionid, (error, foundCollection) => {
+    for(let i=0; i<foundCollection.songs.length; i++){
+      Songs.findById(foundCollection.songs[i], (error, foundSongs) => {
+        res.json(foundSongs)
+      })
+    }
+  })
+})
 
 //create a new collection
 router.post('/', (req, res) => {
