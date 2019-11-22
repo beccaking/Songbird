@@ -231,6 +231,7 @@ this.addToCollection = function(song, collection){
     url:'/collections/' + collection._id,
     data: [song._id, collection.songs]
   }).then(response => {
+    alert(`${song.title} added to ${this.collectionName}`)
     collection.songs = response.data
     this.indexToShow = null
   }, error => {
