@@ -1,5 +1,5 @@
 <div ng-if="ctrl.loggedInUser === false">
-    <button>Signup</button>
+    <button ng-click="ctrl.toggleSignup()">Signup</button>
     <button>Login</button>
     <form ng-submit="ctrl.signup()">
         username: <input ng-model="ctrl.signupUsername"text" name="username"/><br/>
