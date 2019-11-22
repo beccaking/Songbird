@@ -115,15 +115,37 @@ this.getCollections = function(){
 }
 
 // show the songs in a collection - DOESN'T WORK YET!
+//when a user clicks the collection name
+// we should first view the song IDs in that collection
+// then we should look up the song info by song ID
+let songsToShow = []
 this.showSongs = function(collection){
   $http({
     method:'GET',
     url:'/collections/songs/'+ collection._id
   }).then(response => {
-    this.collectionSongs = response
+    songsToShow = response.data
+    // console.log(response);
+    console.log('songsToShow: ', songsToShow);
+    this.showSongs2(songsToShow)
+    // this.collectionSongs = response
   }, error => {
     console.log(error)
   })
+}
+
+//second part of the show songs in a collection request
+this.showSongs2 = function(songsToShow){
+  for(let i=0; i<songsToShow.length; i++){
+    console.log('songs to show length: ', songsToShow.length);
+    console.log('i',i);
+    $http({
+      method:'GET',
+      url:'/songs/'+songsToShow[i]
+    }).then(response => {
+      console.log('show songs 2:', response);
+    })
+  }
 }
 
 //get only that user's collections
