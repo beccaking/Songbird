@@ -57,9 +57,11 @@ this.loggedInUser = false;
     this.loginButton = false;
     this.toggleSignup = () => {
         this.signupButton = !this.signupButton;
+        this.loginButton = false;
     }
     this.toggleLogin = () => {
         this.loginButton = !this.loginButton;
+        this.signupButton = false;
     }
 
     this.logout = () => {
