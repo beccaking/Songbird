@@ -114,6 +114,7 @@ this.getCollections = function(){
   })
 }
 
+this.getCollections();
 //get only that user's collectionsSchemathis.getCollections = function(){
 this.getUserCollections = function(){
   $http({
@@ -181,6 +182,7 @@ this.addSong = function(){
   }).then(response => {
     console.log(response)
     this.getSongs()
+    this.getCollections();
     this.songTitle=''
     this.songArtist=''
     this.songUrl=''
@@ -221,14 +223,10 @@ this.edit = function(song){
   })
 }
 
-//toggle to show collections
-this.show = false
+//add to collections buttons not showing by default
+this.indexToShow = null
 
-this.toggleshow = function(){
-  this.show = !this.show
-}
-
-//add song to collection
+//add a song to an existing collection
 this.addToCollection = function(song, collection){
   $http({
     method:'PUT',
@@ -236,7 +234,28 @@ this.addToCollection = function(song, collection){
     data: [song._id, collection.songs]
   }).then(response => {
     collection.songs = response.data
-    this.show = false
+    this.indexToShow = null
+  }, error => {
+    console.log(error)
+  })
+}
+
+//add a song to a new collection
+this.addToNewCollection = function(song){
+  $http({
+    method:'POST',
+    url: '/collections',
+    data: {
+      name: this.collectionName,
+      user: this.loggedInUser,
+      songs: [song._id]
+    }
+  }).then(response =>{
+    console.log(response.data)
+    alert(`${song.title} added to ${this.collectionName}`)
+    this.indexToShow = null
+    this.collectionName=''
+    this.getCollections();
   }, error => {
     console.log(error)
   })
