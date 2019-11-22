@@ -23,6 +23,7 @@ this.loggedInUser = false;
             }
         }).then((response) => {
             this.loggedInUser = response.data;
+            //the user doesn't have any of their own collections if they just signed up, so diplay all collections
             this.getCollections();
         }, (error) => {
             console.log(error);
@@ -40,7 +41,8 @@ this.loggedInUser = false;
         }).then((response) => {
             if(response.data.username){
                 this.loggedInUser = response.data;
-                this.getCollections();
+                //load & display that user's collections only
+                this.getUserCollections();
             } else {
                 this.loginUsername = null;
                 this.loginPassword = null;
@@ -99,14 +101,14 @@ this.loggedInUser = false;
 this.getSongs()
 
 // Collections Page ============
+// this will pull all collections regardless of user.
 this.getCollections = function(){
   $http({
     method:'GET',
     url:'/collections'
   }).then(response => {
     this.collections = response.data
-    console.log('current user: ' +this.loggedInUser.username);
-    console.log(this.collections);
+    console.log('current user: ' +this.loggedInUser._id);
   }, error => {
     console.log(error);
   })
@@ -119,10 +121,18 @@ this.getUserCollections = function(){
     url:'/collections/'+this.loggedInUser._id
   }).then(response => {
     this.collections = response.data
-    console.log('current user: '+ this.loggedInUser.username);
-    console.log(this.collections);
+    // console.log('current user: '+ this.loggedInUser._id);
+    // console.log(this.collections);
   }, error => {
     console.log(error);
+  })
+}
+
+// show the songs in a collection - DOESN'T WORK YET!
+this.showSongs = function(collection){
+  $http({
+    method:'GET',
+    url:'/songs/'+this.collections
   })
 }
 
@@ -155,6 +165,8 @@ this.deleteCollection = function(collection){
     console.log(error);
   })
 }
+
+// Songs ================
 
 //Add a song to the database
 this.addSong = function(){

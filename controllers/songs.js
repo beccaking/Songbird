@@ -35,6 +35,13 @@ router.get('/', (req, res) => {
     })
 })
 
+//finds a specific song by ID and returns it
+router.get('/:id', (req, res) => {
+  Songs.findById(req.params.id, (error, foundSong) => {
+    res.json(foundSong)
+  })
+})
+
 //drops the existing collection and replaces it with seed data
 router.get('/seed', (req, res) => {
   Songs.remove({}, (error, deletedData) => {
