@@ -227,9 +227,9 @@ this.indexToShow = null
 //add a song to an existing collection
 this.addToCollection = function(song, collection){
   $http({
-    method:'PUT',
-    url:'/collections/' + collection._id,
-    data: [song._id, collection.songs]
+    method:'POST',
+    url:'/collections/addsong/' + collection._id,
+    data: [song._id]
   }).then(response => {
     alert(`${song.title} added to ${this.collectionName}`)
     collection.songs = response.data
