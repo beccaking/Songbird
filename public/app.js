@@ -148,6 +148,7 @@ this.newCollection = function(){
   }).then(response => {
     console.log(response.data);
     this.getUserCollections();
+    this.name='';
   }, error =>{
     console.log(error);
   })
@@ -227,10 +228,11 @@ this.indexToShow = null
 //add a song to an existing collection
 this.addToCollection = function(song, collection){
   $http({
-    method:'PUT',
-    url:'/collections/' + collection._id,
+    method:'POST',
+    url:'/collections/addsong/' + collection._id,
     data: [song._id, collection.songs]
   }).then(response => {
+    alert(`${song.title} added to ${this.collectionName}`)
     collection.songs = response.data
     this.indexToShow = null
   }, error => {
