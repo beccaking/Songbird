@@ -53,6 +53,7 @@ router.put('/:id', (req, res) => {
 // add a song to a collection
 router.post('/addsong/:id', (req, res) => {
   Collections.findById(req.params.id, (err, foundCollection) => {
+    // console.log(req.body[0]);
     foundCollection.songs.push(req.body[0]);
     foundCollection.save()
     res.json(foundCollection)
