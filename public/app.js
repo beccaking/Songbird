@@ -229,7 +229,7 @@ this.addToCollection = function(song, collection){
   $http({
     method:'POST',
     url:'/collections/addsong/' + collection._id,
-    data: [song._id]
+    data: [song._id, collection.songs]
   }).then(response => {
     alert(`${song.title} added to ${this.collectionName}`)
     collection.songs = response.data
