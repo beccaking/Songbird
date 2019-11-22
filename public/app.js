@@ -55,10 +55,12 @@ this.loggedInUser = false;
 
     this.signupButton = false;
     this.loginButton = false;
+
     this.toggleSignup = () => {
         this.signupButton = !this.signupButton;
         this.loginButton = false;
     }
+
     this.toggleLogin = () => {
         this.loginButton = !this.loginButton;
         this.signupButton = false;
@@ -97,7 +99,7 @@ this.loggedInUser = false;
       url:'/songs'
     }).then(response => {
       this.songs = response.data
-      console.log(this.songs)
+      // console.log(this.songs)
     }, error => {
       console.log(error)
     })
@@ -112,7 +114,7 @@ this.getCollections = function(){
     url:'/collections'
   }).then(response => {
     this.collections = response.data
-    console.log('current user: ' +this.loggedInUser._id);
+    // console.log('current user: ' +this.loggedInUser._id);
   }, error => {
     console.log(error);
   })
@@ -123,15 +125,17 @@ this.getCollections = function(){
 // we should first view the song IDs in that collection
 // then we should look up the song info by song ID
 let songsToShow = []
+this.collectionSongs = []
 this.showSongs = function(collection){
+    this.collectionSongs = []
+    console.log('this.showSongs is running');
   $http({
     method:'GET',
     url:'/collections/songs/'+ collection._id
   }).then(response => {
     songsToShow = response.data
-    // console.log(response);
     console.log('songsToShow: ', songsToShow);
-    this.showSongs2(songsToShow)
+    this.showSongs2(songsToShow);
     // this.collectionSongs = response
   }, error => {
     console.log(error)
@@ -139,17 +143,19 @@ this.showSongs = function(collection){
 }
 
 //second part of the show songs in a collection request
-this.showSongs2 = function(songsToShow){
-  for(let i=0; i<songsToShow.length; i++){
-    console.log('songs to show length: ', songsToShow.length);
-    console.log('i',i);
+
+this.showSongs2 = function(songsArray){
+    console.log('this.showSongs2 is running');
+  for(let i = 0; i < songsArray.length; i++){
+    // console.log(songsArray[i]);
     $http({
       method:'GET',
-      url:'/songs/'+songsToShow[i]
-    }).then(response => {
-      console.log('show songs 2:', response);
-    })
-  }
+      url:'/songs/'+songsArray[i]
+  }).then((response) => {
+      // console.log('this.showSongs2:', response.data);
+      this.collectionSongs.push(response.data);
+  })
+} // closes for loop
 }
 
 //get only that user's collections
@@ -160,7 +166,7 @@ this.getUserCollections = function(){
   }).then(response => {
     this.collections = response.data
     // console.log('current user: '+ this.loggedInUser._id);
-    // console.log(this.collections);
+    // console.log(response.data);
   }, error => {
     console.log(error);
   })
@@ -176,7 +182,7 @@ this.newCollection = function(){
       user:this.loggedInUser,
     }
   }).then(response => {
-    console.log(response.data);
+    // console.log(response.data);
     this.getUserCollections();
     this.name='';
   }, error =>{
@@ -190,7 +196,7 @@ this.deleteCollection = function(collection){
     method:"DELETE",
     url:'/collections/'+collection._id
   }).then(response => {
-    console.log('deleted ',collection);
+    // console.log('deleted ',collection);
     this.getUserCollections();
   }, error => {
     console.log(error);
@@ -210,7 +216,7 @@ this.addSong = function(){
       url: this.songUrl
     }
   }).then(response => {
-    console.log(response)
+    // console.log(response)
     this.getSongs()
     this.songTitle=''
     this.songArtist=''

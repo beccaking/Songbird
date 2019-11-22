@@ -10,8 +10,8 @@
 </div>
 </div>
 
-<div ng-repeat='collection in ctrl.collections'>
-  <h2><span ng-click='ctrl.showSongs(collection)' >{{collection.name}}</span> - <span ng-click="ctrl.deleteCollection(collection)">X</span></h2>
+<div ng-repeat="collection in ctrl.collections">
+  <h2><span ng-click="ctrl.showSongs(collection)" >{{collection.name}}</span> - <span ng-click="ctrl.deleteCollection(collection)">X</span></h2>
   <div ng-repeat='song in ctrl.collectionSongs track by $index'>
       <span><b>Song: </b></span>
       <span>{{song.title}}</span>

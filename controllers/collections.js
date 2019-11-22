@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 router.get('/:userid', (req, res) => {
   Collections.find({user:req.params.userid}, (error, foundCollections) => {
     res.json(foundCollections);
-    console.log(foundCollections);
+    // console.log(foundCollections);
   })
 })
 //
@@ -22,7 +22,7 @@ router.get('/:userid', (req, res) => {
 router.get('/songs/:collectionid', (req, res) => {
   let songs = []
   Collections.findById(req.params.collectionid, (error, foundCollection) => {
-    console.log(foundCollection.songs);
+    // console.log(foundCollection.songs);
     res.json(foundCollection.songs)
   })
 })
