@@ -128,13 +128,16 @@ this.getCollections = function(){
 // then we should look up the song info by song ID
 let songsToShow = []
 this.collectionSongs = []
+let collectionToShow
 this.showSongs = function(collection){
-    this.collectionSongs = []
+  this.collectionSongs = []
+  collectionToShow = collection._id
   $http({
     method:'GET',
     url:'/collections/songs/'+ collection._id
   }).then(response => {
     songsToShow = response.data;
+    console.log('response data: ', response.data);
     this.showSongs2(songsToShow);
   }, error => {
     console.log(error)
@@ -142,7 +145,6 @@ this.showSongs = function(collection){
 }
 
 //second part of the show songs in a collection request
-
 this.showSongs2 = function(songsArray){
     console.log('this.showSongs2 is running');
   for(let i = 0; i < songsArray.length; i++){
@@ -323,6 +325,21 @@ this.addToCollection = function(song, collection){
     } else {
     alert(`${song.title} already in collection`)
   }
+}
+
+//remove a song from a collection
+this.removeSongFromPlaylist = function(song){
+  console.log('remove ' + song._id + ' from '+collectionToShow);
+  $http({
+    method:"POST",
+    url:'/collections/removesong/'+collectionToShow+'/'+song._id
+  }).then(response => {
+    console.log('remove song from playlist response data:', response.data);
+    this.getUserCollections();
+    // this.getUserCollections()
+  }, error => {
+    console.log(error);
+  })
 }
 
 //add a song to a new collection
