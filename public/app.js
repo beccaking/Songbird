@@ -3,11 +3,10 @@ const app = angular.module('MyApp', []).config(function($sceProvider){
 });
 
 app.controller('MainController', ['$http', function($http){
-this.loggedInUser = this.loggedInUser || false;
-console.log(this.loggedInUser)
+this.loggedInUser = false
+console.log(this.loggedInUser + ' on load')
 // Partials ===============
   this.includePath = 'html/partials/viewallsongs.html'
-  console.log(this.includePath)
 
   this.changeInclude = (path) => {
     this.includePath = 'html/partials/' + path + '.html'
@@ -88,6 +87,8 @@ console.log(this.loggedInUser)
     }).then((response) => {
         if(response.data.username){
             this.loggedInUser = response.data;
+            console.log(this.loggedInUser)
+            this.getUserCollections()
         }
     }, (error) => {
         console.log(error);
@@ -156,15 +157,20 @@ this.showSongs2 = function(songsArray){
 
 //get only that user's collections
 this.getUserCollections = function(){
+  console.log('starting to get user collections')
+  console.log(this.loggedInUser._id)
   $http({
     method:'GET',
     url:'/collections/'+this.loggedInUser._id
-  }).then(response => {
+  }).then((response) => {
     this.collections = response.data
-  }, error => {
+    console.log(this.collections)
+    console.log(response.data)
+  }, (error) => {
     console.log(error);
   })
 }
+
 
 //new collection
 this.newCollection = function(){
@@ -338,6 +344,16 @@ this.addToNewCollection = function(song){
   }, error => {
     console.log(error)
   })
+}
+
+this.open = false
+
+this.openModal = function(){
+  this.open = true
+}
+
+this.closeModal = function(){
+  this.open = false
 }
 
 }]);
