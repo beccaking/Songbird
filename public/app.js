@@ -258,7 +258,7 @@ this.indexToShow = null
 this.checkForDuplicates = function(song, collection){
   let unique = true
   for(i=0;i<collection.songs.length;i++){
-    if(song._id === collection.songs[i]._id){
+    if(song._id === collection.songs[i]){
       unique = false
     }
   }
