@@ -3,10 +3,11 @@ const app = angular.module('MyApp', []).config(function($sceProvider){
 });
 
 app.controller('MainController', ['$http', function($http){
-this.loggedInUser = false;
-
+this.loggedInUser = this.loggedInUser || false;
+console.log(this.loggedInUser)
 // Partials ===============
   this.includePath = 'html/partials/viewallsongs.html'
+  console.log(this.includePath)
 
   this.changeInclude = (path) => {
     this.includePath = 'html/partials/' + path + '.html'
@@ -178,6 +179,7 @@ this.newCollection = function(){
   }).then(response => {
     // console.log(response.data);
     this.getUserCollections();
+    console.log(this.loggedInUser)
     this.name='';
   }, error =>{
     console.log(error);
@@ -191,6 +193,7 @@ this.deleteCollection = function(collection){
     url:'/collections/'+collection._id
   }).then(response => {
     // console.log('deleted ',collection);
+    this.collectionSongs = null
     this.getUserCollections();
   }, error => {
     console.log(error);
@@ -201,7 +204,7 @@ this.deleteCollection = function(collection){
 
 //Add a song to the database
 this.addSong = function(){
-  //if the address does not start with http, add "https://www." to the beginning
+  // //if the address does not start with http, add "https://www." to the beginning
   const patternmatch = (url) => {
     const regexp = /^http/
     if(url.match(regexp)){
@@ -229,7 +232,6 @@ this.addSong = function(){
 
   if(watch){
     this.songUrl = this.songUrl.replace('watch?v=','embed/')
-    console.log(this.songUrl)
   }
 
     $http({
