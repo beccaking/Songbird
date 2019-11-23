@@ -58,4 +58,15 @@ router.post('/addsong/:id', (req, res) => {
   })
 })
 
+// remove song from a collection
+router.post('/removesong/:collectionid/:songid', (req, res) => {
+  Collections.findById(req.params.collectionid, (err, foundCollection) => {
+    let removeIndex = foundCollection.songs.indexOf(req.params.songid)
+    foundCollection.songs.splice(removeIndex, 1)
+    foundCollection.save()
+    // foundCollection.songs.indexOf(re)
+    res.json(foundCollection)
+  })
+})
+
 module.exports = router;
