@@ -25,7 +25,7 @@ Ayla Ex - [GitHub](https://github.com/aylaex)
 ## User Stories
 * When logged out
     * visitors can access the Song Bird website and view all of the songs that have been uploaded.
-    * songs are video embeds, allowing the visitor to view the video which accompanies the track, if a video has been provided on youtube.
+    * songs are video embeds, allowing the visitor to view the video which accompanies the track.
     * viewers can signup for a user account and login with the username and password chosen at signup.
 * When logged in
     * viewers become users
