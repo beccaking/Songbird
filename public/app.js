@@ -201,23 +201,39 @@ this.deleteCollection = function(collection){
 
 //Add a song to the database
 this.addSong = function(){
-  $http({
-    method:'POST',
-    url:'/songs',
-    data: {
-      title: this.songTitle,
-      artist: this.songArtist,
-      url: this.songUrl
+  //if the address does not start with http, add "https://www." to the beginning
+  const patternmatch = (url) => {
+    const regexp = /^http/
+    if(url.match(regexp)){
+      return (prefix = true)
     }
-  }).then(response => {
-    // console.log(response)
-    this.getSongs()
-    this.songTitle=''
-    this.songArtist=''
-    this.songUrl=''
-  }, error => {
-    console.log(error)
-  })
+    return (prefix = false)
+  }
+
+  patternmatch(this.songUrl);
+
+  if(!prefix){
+    this.songUrl = 'https://www.' + this.songUrl
+  }
+  //if the next string after .com/ is watch, remove the first 32 characters
+  //add https://www.youtube.com/embed/ + what's left
+    $http({
+      method:'POST',
+      url:'/songs',
+      data: {
+        title: this.songTitle,
+        artist: this.songArtist,
+        url: this.songUrl
+      }
+    }).then(response => {
+      // console.log(response)
+      this.getSongs()
+      this.songTitle=''
+      this.songArtist=''
+      this.songUrl=''
+    }, error => {
+      console.log(error)
+    })
 }
 
 //delete a song from the database (admin function)
