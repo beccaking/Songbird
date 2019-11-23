@@ -3,10 +3,11 @@ const app = angular.module('MyApp', []).config(function($sceProvider){
 });
 
 app.controller('MainController', ['$http', function($http){
-this.loggedInUser = false;
-
+this.loggedInUser = this.loggedInUser || false;
+console.log(this.loggedInUser)
 // Partials ===============
   this.includePath = 'html/partials/viewallsongs.html'
+  console.log(this.includePath)
 
   this.changeInclude = (path) => {
     this.includePath = 'html/partials/' + path + '.html'
@@ -173,10 +174,12 @@ this.newCollection = function(){
     data: {
       name:this.name,
       user:this.loggedInUser,
+      songs: []
     }
   }).then(response => {
     // console.log(response.data);
     this.getUserCollections();
+    console.log(this.loggedInUser)
     this.name='';
   }, error =>{
     console.log(error);
@@ -190,6 +193,7 @@ this.deleteCollection = function(collection){
     url:'/collections/'+collection._id
   }).then(response => {
     // console.log('deleted ',collection);
+    this.collectionSongs = null
     this.getUserCollections();
   }, error => {
     console.log(error);
@@ -200,23 +204,53 @@ this.deleteCollection = function(collection){
 
 //Add a song to the database
 this.addSong = function(){
-  $http({
-    method:'POST',
-    url:'/songs',
-    data: {
-      title: this.songTitle,
-      artist: this.songArtist,
-      url: this.songUrl
+  // //if the address does not start with http, add "https://www." to the beginning
+  const patternmatch = (url) => {
+    const regexp = /^http/
+    if(url.match(regexp)){
+      return (prefix = true)
     }
-  }).then(response => {
-    // console.log(response)
-    this.getSongs()
-    this.songTitle=''
-    this.songArtist=''
-    this.songUrl=''
-  }, error => {
-    console.log(error)
-  })
+    return (prefix = false)
+  }
+
+  patternmatch(this.songUrl);
+
+  if(!prefix){
+    this.songUrl = 'https://www.' + this.songUrl
+  }
+
+  //if the string contains the word watch, replace watch?v= with embed/
+  const patternmatch1 = (url) => {
+    const regexp = /watch/
+    if(url.match(regexp)){
+      return (watch = true)
+    }
+    return (watch = false)
+  }
+
+  patternmatch1(this.songUrl);
+
+  if(watch){
+    this.songUrl = this.songUrl.replace('watch?v=','embed/')
+  }
+
+    $http({
+      method:'POST',
+      url:'/songs',
+      data: {
+        title: this.songTitle,
+        artist: this.songArtist,
+        url: this.songUrl
+      }
+    }).then(response => {
+      // console.log(response)
+      this.getSongs()
+      this.songTitle=''
+      this.songArtist=''
+      this.songUrl=''
+    }, error => {
+      console.log(error)
+    })
 }
 
 //delete a song from the database (admin function)
@@ -258,7 +292,7 @@ this.indexToShow = null
 this.checkForDuplicates = function(song, collection){
   let unique = true
   for(i=0;i<collection.songs.length;i++){
-    if(song._id === collection.songs[i]._id){
+    if(song._id === collection.songs[i]){
       unique = false
     }
   }
@@ -276,10 +310,10 @@ this.addToCollection = function(song, collection){
           alert(`${song.title} added to ${collection.name}`)
           collection.songs = response.data
           this.indexToShow = null
+          this.getUserCollections();
         }, error => {
         console.log(error)
       })
-      this.getUserCollections();
     } else {
     alert(`${song.title} already in collection`)
   }
