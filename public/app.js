@@ -131,7 +131,7 @@ this.collectionSongs = []
 let collectionToShow
 this.showSongs = function(collection){
   this.collectionSongs = []
-  collectionToShow = collection._id
+  collectionToShow = collection
   $http({
     method:'GET',
     url:'/collections/songs/'+ collection._id
@@ -329,13 +329,13 @@ this.addToCollection = function(song, collection){
 
 //remove a song from a collection
 this.removeSongFromPlaylist = function(song){
-  console.log('remove ' + song._id + ' from '+collectionToShow);
+  console.log('remove ' + song._id + ' from '+collectionToShow._id);
   $http({
     method:"POST",
-    url:'/collections/removesong/'+collectionToShow+'/'+song._id
+    url:'/collections/removesong/'+collectionToShow._id+'/'+song._id
   }).then(response => {
-    console.log('remove song from playlist response data:', response.data);
-    this.getUserCollections();
+    console.log('remove song response' + response.data);
+    this.showSongs(collectionToShow);
     // this.getUserCollections()
   }, error => {
     console.log(error);

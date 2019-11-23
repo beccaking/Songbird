@@ -61,13 +61,9 @@ router.post('/addsong/:id', (req, res) => {
 // remove song from a collection
 router.post('/removesong/:collectionid/:songid', (req, res) => {
   Collections.findById(req.params.collectionid, (err, foundCollection) => {
-    console.log('found collection: ', foundCollection);
-    console.log('song to remove: ', req.params.songid)
     let removeIndex = foundCollection.songs.indexOf(req.params.songid)
-    console.log('remove index: ',removeIndex);
     foundCollection.songs.splice(removeIndex, 1)
     foundCollection.save()
-    console.log('after slice collection: ', foundCollection);
     // foundCollection.songs.indexOf(re)
     res.json(foundCollection)
   })
