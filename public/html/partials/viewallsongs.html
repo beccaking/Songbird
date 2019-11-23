@@ -3,18 +3,19 @@
 <div ng-if="ctrl.loggedInUser !== false">
 <h4>Add a song to the database: </h4>
 <form ng-submit='ctrl.addSong()'>
-  <input type="text" ng-model="ctrl.songTitle" placeholder="Song title" required>
-  <input type="text" ng-model="ctrl.songArtist" placeholder="Artist" required>
-  <input type="text" ng-model="ctrl.songUrl" placeholder="Youtube URL" required>
-  <input type="submit" value="Add Song">
+  <input class="add-buttons" type="text" ng-model="ctrl.songTitle" placeholder="Song title" required>
+  <input class="add-buttons" type="text" ng-model="ctrl.songArtist" placeholder="Artist" required>
+  <input class="add-buttons" type="text" ng-model="ctrl.songUrl" placeholder="Youtube URL" required>
+  <button class="add-buttons" type="submit">Add Song</button>
 </form>
 <br/>
 <br/>
 </div>
 <!-- Add a song -->
 
+<div class="flex-container">
 <!-- List of songs -->
-<div ng-repeat="song in ctrl.songs">
+<div class='box' ng-repeat="song in ctrl.songs">
   <span><b>Song: </b></span><span>{{song.title}}</span>
   <br/>
   <span><b>Artist: </b></span><span>{{song.artist}}</span>
@@ -24,28 +25,29 @@
   <!-- List of songs -->
 
   <!-- Add to collection buttons -->
-  <button ng-if='(ctrl.loggedInUser) && (ctrl.indexToShow !== $index)' ng-click='ctrl.indexToShow = $index'>Add to Collection</button>
-  <button ng-if='(ctrl.loggedInUser) && (ctrl.indexToShow === $index)' ng-click='ctrl.indexToShow = null'>Add to Collection</button>
+  <button class="add-buttons special" ng-if='(ctrl.loggedInUser) && (ctrl.indexToShow !== $index)' ng-click='ctrl.indexToShow = $index'>Add to Collection</button>
+  <button class="add-buttons special" ng-if='(ctrl.loggedInUser) && (ctrl.indexToShow === $index)' ng-click='ctrl.indexToShow = null'>Add to Collection</button>
     <div ng-if='($index === ctrl.indexToShow)'>
       <div ng-if='(ctrl.collections.length !== 0)' ng-repeat='collection in ctrl.collections'>
-        <button ng-click='ctrl.addToCollection(song, collection)'>Add to {{collection.name}}</button>
+        <button class="add-buttons" -click='ctrl.addToCollection(song, collection)'>Add to {{collection.name}}</button>
       </div>
     </div>
     <form ng-if='($index === ctrl.indexToShow)' ng-submit='ctrl.addToNewCollection(song)'>
-      <input type='text' ng-model='ctrl.collectionName' placeholder='Collection name'>
-      <input type='submit' value='Add to a new collection'>
+      <input class="add-buttons" type='text' ng-model='ctrl.collectionName' placeholder='Collection name'>
+      <button class="add-buttons" type='submit'>Add to a new collection</button>
     </form>
 <!-- Add to collection buttons -->
 
 <!-- admin functions -->
-  <button ng-if='(ctrl.loggedInUser.username === "admin")' ng-click='ctrl.delete(song)'>Delete</button>
+  <button class="add-buttons" ng-if='(ctrl.loggedInUser.username === "admin")' ng-click='ctrl.delete(song)'>Delete</button>
   <form ng-if='(ctrl.loggedInUser.username === "admin")' ng-submit='ctrl.edit(song)'>
-    <input type="text" ng-model='ctrl.editedTitle' placeholder='{{song.title}}'>
-    <input type="text" ng-model='ctrl.editedArtist' placeholder='{{song.artist}}'>
-    <input type="text" ng-model='ctrl.editedUrl' placeholder='{{song.url}}'>
-    <input type="submit" value="Edit Song">
+    <input class="add-buttons" type="text" ng-model='ctrl.editedTitle' placeholder='{{song.title}}'>
+    <input class="add-buttons" type="text" ng-model='ctrl.editedArtist' placeholder='{{song.artist}}'>
+    <input class="add-buttons" type="text" ng-model='ctrl.editedUrl' placeholder='{{song.url}}'>
+    <button class="add-buttons" type="submit">Edit Song</button>
   </form>
   <!-- admin functions -->
+  </div>
 
 
 </div>
