@@ -173,6 +173,7 @@ this.newCollection = function(){
     data: {
       name:this.name,
       user:this.loggedInUser,
+      songs: []
     }
   }).then(response => {
     // console.log(response.data);
@@ -276,10 +277,10 @@ this.addToCollection = function(song, collection){
           alert(`${song.title} added to ${collection.name}`)
           collection.songs = response.data
           this.indexToShow = null
+          this.getUserCollections();
         }, error => {
         console.log(error)
       })
-      this.getUserCollections();
     } else {
     alert(`${song.title} already in collection`)
   }
