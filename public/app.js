@@ -346,4 +346,14 @@ this.addToNewCollection = function(song){
   })
 }
 
+this.open = false
+
+this.openModal = function(){
+  this.open = true
+}
+
+this.closeModal = function(){
+  this.open = false
+}
+
 }]);
