@@ -24,10 +24,12 @@ Ayla Ex - [GitHub](https://github.com/aylaex)
 
 ## User Stories
 * When logged out
-    * Users can visit the Song Bird website and view all of the songs that have been uploaded.
-    * Songs are video embeds, allowing the user to view the video which accompanies the track, if a video has been provided on youtube.
-    * Users can signup for an account and login with the username and password chosen at signup.
+    * visitors can access the Song Bird website and view all of the songs that have been uploaded.
+    * songs are video embeds, allowing the visitor to view the video which accompanies the track, if a video has been provided on youtube.
+    * viewers can signup for a user account and login with the username and password chosen at signup.
 * When logged in
+    * viewers become users
+    * users have all the same permissions as visitors
     * users can add songs from youtube to the database.
     * users can create collections that are unique to their user account.
     * users can add songs to any of their collections.
@@ -36,7 +38,6 @@ Ayla Ex - [GitHub](https://github.com/aylaex)
     * users can logout.
 
 * Admin accounts have all the same features as user accounts.
-* When logged in
     * admins can edit or delete songs from the database.
 
 ## Wireframes
