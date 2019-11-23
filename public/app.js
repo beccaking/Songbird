@@ -215,8 +215,23 @@ this.addSong = function(){
   if(!prefix){
     this.songUrl = 'https://www.' + this.songUrl
   }
-  //if the next string after .com/ is watch, remove the first 32 characters
-  //add https://www.youtube.com/embed/ + what's left
+
+  //if the string contains the word watch, replace watch?v= with embed/
+  const patternmatch1 = (url) => {
+    const regexp = /watch/
+    if(url.match(regexp)){
+      return (watch = true)
+    }
+    return (watch = false)
+  }
+
+  patternmatch1(this.songUrl);
+
+  if(watch){
+    this.songUrl = this.songUrl.replace('watch?v=','embed/')
+    console.log(this.songUrl)
+  }
+
     $http({
       method:'POST',
       url:'/songs',
