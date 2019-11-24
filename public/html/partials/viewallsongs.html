@@ -41,13 +41,16 @@
 <!-- Add to collection buttons -->
 
 <!-- admin functions -->
-  <button class="add-buttons" ng-if='(ctrl.loggedInUser.username === "admin")' ng-click='ctrl.delete(song)'>Delete</button>
+  <button class="add-buttons special" ng-if='(ctrl.loggedInUser.username === "admin")' ng-click='ctrl.delete(song)'>Delete Song</button>
+
+  <div class="editSongs">
   <form ng-if='(ctrl.loggedInUser.username === "admin")' ng-submit='ctrl.edit(song)'>
-    <input class="add-buttons" type="text" ng-model='ctrl.editedTitle' placeholder='{{song.title}}'>
-    <input class="add-buttons" type="text" ng-model='ctrl.editedArtist' placeholder='{{song.artist}}'>
-    <input class="add-buttons" type="text" ng-model='ctrl.editedUrl' placeholder='{{song.url}}'>
+    Name:<input class="add-buttons" type="text" ng-model='ctrl.editedTitle' placeholder='{{song.title}}'>
+    Artist:<input class="add-buttons" type="text" ng-model='ctrl.editedArtist' placeholder='{{song.artist}}'>
+    Link:<input class="add-buttons" type="text" ng-model='ctrl.editedUrl' placeholder='{{song.url}}'>
     <button class="add-buttons" type="submit">Edit Song</button>
   </form>
+  </div>
   <!-- admin functions -->
   </div>
 

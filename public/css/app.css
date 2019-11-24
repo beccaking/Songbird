@@ -108,3 +108,8 @@ body {
     font-size: 20px;
     font-weight: bold;
 }
+
+.editSongs {
+    border: 1px dashed black;
+    margin-top: 10px;
+}
