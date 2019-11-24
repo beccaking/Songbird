@@ -90,3 +90,20 @@ body {
 .song-info{
     text-transform: capitalize;
 }
+
+.collection {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid gold;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.collection-info {
+    margin: 10px;
+}
+
+.collection-info > p {
+    font-size: 20px;
+    font-weight: bold;
+}

@@ -1,17 +1,27 @@
     <!--create new collection (on the user collection page, but when they click something it will toggle show) -->
 <div ng-if="ctrl.loggedInUser !== false">
-<h1>View User's Collections Here</h1>
+<h1>My Collections</h1>
+<h4>Create a new collection: </h4>
 
 <div class="new-collection">
   <form ng-submit="ctrl.newCollection()">
     <input ng-model='ctrl.name' type="text" placeholder='Collection Name' required>
-    <input type="submit" value="Create New Collection">
+    <input type="submit" value="Create Collection">
   </form>
 </div>
 </div>
-
+<!-- List of collections -->
+<div class="flex-container">
 <div ng-repeat="collection in ctrl.collections">
-  <h2><span ng-click="ctrl.index = $index; ctrl.showSongs(collection)" >{{collection.name}}</span> - <span ng-click="ctrl.deleteCollection(collection)">X</span></h2>
+    <div class="collection">
+        <div class="collection-info">
+            <p ng-click="ctrl.index = $index; ctrl.showSongs(collection)">{{collection.name}}</h2>
+        </div>
+        <div class="collection-info">
+            <p ng-click="ctrl.deleteCollection(collection)"><ion-icon name="trash"></ion-icon></h2>
+        </div>
+    </div>
+  </div>
   </div>
   <div ng-repeat='song in ctrl.collectionSongs track by $index'>
       <span><b>Song: </b></span>
