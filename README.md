@@ -41,10 +41,10 @@ Ayla Ex - [GitHub](https://github.com/aylaex)
     * admins can edit or delete songs from the database.
 
 ## Wireframes
-['All Songs' Page](https://wireframe.cc/Ka4dIS)
+['All Songs' Page](https://wireframe.cc/Ka4dIS) <- click for interactive wireframe
 ![Wireframe for 'All Songs' page](https://i.imgur.com/7E8ZboD.png)
 
-['My Collections' Page](https://wireframe.cc/DpzAGK)
+['My Collections' Page](https://wireframe.cc/DpzAGK) <- click for interactive wireframe
 ![Wireframe for 'My Collections' page](https://i.imgur.com/KoutfYE.png)
 
 ## Approach Taken
