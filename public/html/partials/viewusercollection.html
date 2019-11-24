@@ -15,15 +15,23 @@
 <div ng-repeat="collection in ctrl.collections">
     <div class="collection">
         <div class="collection-info">
-            <p ng-click="ctrl.index = $index; ctrl.showSongs(collection)">{{collection.name}}</h2>
+            <!-- ctrl.chosenCollection needs to be reassigned to the name of the collection clicked -->
+            <p ng-click="ctrl.index = $index;
+            ctrl.showSongs(collection);
+            ctrl.chosenCollection = true">{{collection.name}}</p>
         </div>
         <div class="collection-info">
-            <p ng-click="ctrl.deleteCollection(collection)"><ion-icon name="trash"></ion-icon></h2>
+            <p ng-click="ctrl.deleteCollection(collection)"><ion-icon name="trash"></ion-icon></p>
         </div>
     </div>
   </div>
   </div>
-  <div ng-repeat='song in ctrl.collectionSongs track by $index'>
+  <!-- Name of chosen collection -->
+  <h2
+    ng-if="ctrl.chosenCollection !== false">this.chosenCollection =  {{ctrl.chosenCollection}}</h2>
+  <!-- List of songs -->
+  <div class="flex-container">
+  <div class="box" ng-repeat='song in ctrl.collectionSongs track by $index'>
       <span><b>Song: </b></span>
       <span>{{song.title}}</span>
       <br/>
@@ -33,4 +41,5 @@
       <iframe width="400" height="225" src="{{song.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <h4 ng-click="ctrl.removeSongFromPlaylist(song)">Remove Song From Playlist</h4>
       <br/>
+  </div>
   </div>

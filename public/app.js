@@ -133,6 +133,8 @@ this.getCollections = function(){
 // then we should look up the song info by song ID
 let songsToShow = []
 this.collectionSongs = []
+this.chosenCollection = false;
+
 let collectionToShow
 this.showSongs = function(collection){
   this.collectionSongs = []
