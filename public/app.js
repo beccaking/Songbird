@@ -55,15 +55,18 @@ console.log(this.loggedInUser + ' on load')
 
     this.signupButton = false;
     this.loginButton = false;
+    this.signupLoginButtons = true;
 
     this.toggleSignup = () => {
         this.signupButton = !this.signupButton;
         this.loginButton = false;
+        this.signupLoginButtons = !this.signupLoginButtons;
     }
 
     this.toggleLogin = () => {
         this.loginButton = !this.loginButton;
         this.signupButton = false;
+        this.signupLoginButtons = !this.signupLoginButtons;
     }
 
     this.logout = () => {
