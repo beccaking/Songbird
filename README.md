@@ -41,8 +41,20 @@ Ayla Ex - [GitHub](https://github.com/aylaex)
     * admins can edit or delete songs from the database.
 
 ## Wireframes
+['All Songs' Page](https://wireframe.cc/Ka4dIS) <- click for interactive wireframe
+![Wireframe for 'All Songs' page](https://i.imgur.com/7E8ZboD.png)
+
+['My Collections' Page](https://wireframe.cc/DpzAGK) <- click for interactive wireframe
+![Wireframe for 'My Collections' page](https://i.imgur.com/KoutfYE.png)
 
 ## Approach Taken
+After brainstorming an idea for our app, we worked together to set up a GitHub repository and Heroku cluster for deployment. We then took to Trello to compile a complete list of user stories and the first set of tasks to complete to get the app up and running and the basic file structure in place.
+
+From there we were able to work simultaneously in different files to complete the setup of our app. For example: while one person worked on the songs model and controller, one person worked on the collections model and controller, and one person worked on the users model and controller.
+
+We then continued to add to our Trello list of tasks and divvy up the work based on who was already working with the files and features in question.
+
+We communicated via Slack while working on our separate tasks to make sure we only had one person working in app.js at a time, and when we ran into issues and/or bugs, we added them to a dedicated 'Bug Tracker' on Trello and took turns debugging and troubleshooting until we resolved the issue.
 
 ## Unsolved Problems
 * Refreshing while on the "View User's Collections" page brings the user back to the "All Songs Page" (the landing page).

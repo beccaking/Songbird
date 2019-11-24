@@ -1,8 +1,10 @@
-<h3 id='about' ng-click='ctrl.openModal()'>About the Site</h3>
+<h3 id='about'
+ng-if="ctrl.loggedInUser === false"
+ng-click='ctrl.openModal()'>About the Site</h3>
 <div id='modal' ng-if='ctrl.open'>
   <div id='modal-textbox'>
-  <h3>About Song Bird</h3>
-  <p>Song Bird is a music listening platform that allows users to upload songs to a shared database and keep personal collections of their favorite tracks. The site is a collaboration between Ayla Ex, Jewls Krueger, and Becca King, students of General Assembly's software engineering bootcamp.</p>
+  <h3>About Songbird</h3>
+  <p>Songbird is a music listening platform that allows users to upload songs to a shared database and keep personal collections of their favorite tracks. The site is a collaboration between Ayla Ex, Jewls Krueger, and Becca King, students of General Assembly's software engineering bootcamp.</p>
   <a id='close' href='#' ng-click='ctrl.closeModal()'>Close</a>
   </div>
 </div>
