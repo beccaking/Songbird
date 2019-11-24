@@ -74,6 +74,8 @@ console.log(this.loggedInUser + ' on load')
             this.loggedInUser = false;
             this.loginUsername = null;
             this.loginPassword = null;
+            this.signupUsername = null;
+            this.signupPassword = null;
             this.changeInclude('viewallsongs');
             this.getUserCollections();
         }, (error) => {
