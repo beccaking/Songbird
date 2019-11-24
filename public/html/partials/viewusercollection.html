@@ -1,26 +1,46 @@
     <!--create new collection (on the user collection page, but when they click something it will toggle show) -->
 <div ng-if="ctrl.loggedInUser !== false">
-<h1>View User's Collections Here</h1>
+<h1>My Collections</h1>
+<h4>Create a new collection: </h4>
 
 <div class="new-collection">
   <form ng-submit="ctrl.newCollection()">
-    <input ng-model='ctrl.name' type="text" placeholder='Collection Name' required>
-    <input type="submit" value="Create New Collection">
+    <input class="add-buttons" ng-model='ctrl.name' type="text" placeholder='Collection Name' required>
+    <input class="add-buttons special" type="submit" value="Create Collection">
   </form>
 </div>
 </div>
-
+<!-- List of collections -->
+<div class="flex-container">
 <div ng-repeat="collection in ctrl.collections">
-  <h2><span ng-click="ctrl.index = $index; ctrl.showSongs(collection)" >{{collection.name}}</span> - <span ng-click="ctrl.deleteCollection(collection)">X</span></h2>
+    <div class="collection">
+        <div class="collection-info">
+            <!-- ctrl.chosenCollection needs to be reassigned to the name of the collection clicked -->
+            <p ng-click="ctrl.index = $index;
+            ctrl.showSongs(collection)">{{collection.name}}</p>
+        </div>
+        <div class="collection-info">
+            <p ng-click="ctrl.deleteCollection(collection)"><ion-icon name="trash"></ion-icon></p>
+        </div>
+    </div>
   </div>
-  <div ng-repeat='song in ctrl.collectionSongs track by $index'>
+  </div>
+  <!-- Name of chosen collection -->
+  <h2
+    ng-if="(ctrl.collectionToShow)"> {{ctrl.collectionToShow.name}}</h2>
+  <!-- List of songs -->
+  <div class="flex-container">
+  <div class="box" ng-repeat='song in ctrl.collectionSongs track by $index'>
+      <div>
       <span><b>Song: </b></span>
-      <span>{{song.title}}</span>
+     <span class="song-info">{{song.title}}</span>
       <br/>
       <span><b>Artist: </b></span>
-      <span>{{song.artist}}</span>
+      <span class="song-info">{{song.artist}}</span>
+      </div>
       <br/>
       <iframe width="400" height="225" src="{{song.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <h4 ng-click="ctrl.removeSongFromPlaylist(song)">Remove Song From Playlist</h4>
+      <button class="add-buttons special" ng-click="ctrl.removeSongFromPlaylist(song)">Remove Song From Collection</button>
       <br/>
+  </div>
   </div>

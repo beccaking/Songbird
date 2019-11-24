@@ -55,15 +55,18 @@ console.log(this.loggedInUser + ' on load')
 
     this.signupButton = false;
     this.loginButton = false;
+    this.signupLoginButtons = true;
 
     this.toggleSignup = () => {
         this.signupButton = !this.signupButton;
         this.loginButton = false;
+        this.signupLoginButtons = !this.signupLoginButtons;
     }
 
     this.toggleLogin = () => {
         this.loginButton = !this.loginButton;
         this.signupButton = false;
+        this.signupLoginButtons = !this.signupLoginButtons;
     }
 
     this.logout = () => {
@@ -74,6 +77,8 @@ console.log(this.loggedInUser + ' on load')
             this.loggedInUser = false;
             this.loginUsername = null;
             this.loginPassword = null;
+            this.signupUsername = null;
+            this.signupPassword = null;
             this.changeInclude('viewallsongs');
             this.getUserCollections();
         }, (error) => {
@@ -128,10 +133,11 @@ this.getCollections = function(){
 // then we should look up the song info by song ID
 let songsToShow = []
 this.collectionSongs = []
-let collectionToShow
+
+this.collectionToShow = null
 this.showSongs = function(collection){
   this.collectionSongs = []
-  collectionToShow = collection
+  this.collectionToShow = collection
   $http({
     method:'GET',
     url:'/collections/songs/'+ collection._id
