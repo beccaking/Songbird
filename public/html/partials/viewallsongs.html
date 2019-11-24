@@ -6,7 +6,7 @@
   <input class="add-buttons" type="text" ng-model="ctrl.songTitle" placeholder="Song title" required>
   <input class="add-buttons" type="text" ng-model="ctrl.songArtist" placeholder="Artist" required>
   <input class="add-buttons" type="text" ng-model="ctrl.songUrl" placeholder="Youtube URL" required>
-  <button class="add-buttons" type="submit">Add Song</button>
+  <input class="add-buttons" type="submit" value="Add Song">
 </form>
 <br/>
 <br/>
@@ -29,7 +29,7 @@
   <button class="add-buttons special" ng-if='(ctrl.loggedInUser) && (ctrl.indexToShow === $index)' ng-click='ctrl.indexToShow = null'>Add to Collection</button>
     <div ng-if='($index === ctrl.indexToShow)'>
       <div ng-if='(ctrl.collections.length !== 0)' ng-repeat='collection in ctrl.collections'>
-        <button class="add-buttons" -click='ctrl.addToCollection(song, collection)'>Add to {{collection.name}}</button>
+        <button class="add-buttons" ng-click='ctrl.addToCollection(song, collection)'>Add to {{collection.name}}</button>
       </div>
     </div>
     <form ng-if='($index === ctrl.indexToShow)' ng-submit='ctrl.addToNewCollection(song)'>
