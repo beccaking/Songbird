@@ -14,7 +14,9 @@
     <h1 ng-click="ctrl.changeInclude('viewallsongs')">Song Bird</h1>
   </div>
   <!-- partial for about us modal -->
-  <div ng-include="'html/partials/aboutus.html'"></div>
+  <div
+  ng-if="ctrl.loggedInUser === false"
+  ng-include="'html/partials/aboutus.html'"></div>
   <!-- partial for the log in sign up -->
   <div ng-include="'html/partials/loginsignup.html'"></div>
 <!-- menu partial -->
