@@ -133,12 +133,11 @@ this.getCollections = function(){
 // then we should look up the song info by song ID
 let songsToShow = []
 this.collectionSongs = []
-this.chosenCollection = false;
 
-let collectionToShow
+this.collectionToShow = null
 this.showSongs = function(collection){
   this.collectionSongs = []
-  collectionToShow = collection
+  this.collectionToShow = collection
   $http({
     method:'GET',
     url:'/collections/songs/'+ collection._id

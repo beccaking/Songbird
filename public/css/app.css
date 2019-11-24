@@ -1,17 +1,26 @@
 :root {
     /* insert root colors and fonts here */
+    --pale-purple: #F8EFFB;
+    --dark-purple: #2A0A29;
+    --dark-grey: #1C1C1C;
+    --mauve: #8E6B6B;
+    --cursive: 'Calistoga', cursive;
 }
 
 body {
   text-align: center;
+  background: var(--dark-purple);
+  color: var(--pale-purple);
 }
 
 .header {
     width: 90%;
     min-width: 450px;
     margin: auto;
-    border: 1px solid black;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
     margin-top: 20px;
+    font-family: var(--cursive)
 }
 
 .nav {
@@ -19,15 +28,16 @@ body {
     width: 450px;
     margin: auto;
     justify-content: space-between;
+    font-family: var(--cursive)
 }
 
 .nav-button {
-    outline: 1px solid black;
+    outline: 1px solid white;
     padding: 10px;
 }
 .nav-button:hover {
   cursor: pointer;
-  outline: 2px solid black;
+  outline: 2px solid white;
 }
 
 #about {
@@ -46,7 +56,8 @@ body {
 }
 
 #modal-textbox {
-  background-color: #F2F2F2;
+  background-color: var(--pale-purple);
+  color: var(--dark-purple);
   border: 1px solid black;
   height: 200px;
   width: 400px;
@@ -68,8 +79,8 @@ body {
 }
 
 .box {
-  border: 2px solid black;
-  background-color: #F2F2F2;
+  border: 0.5px solid var(--dark-grey);
+  background-color: var(--mauve);
   border-radius: 5px;
   width: 400px;
   margin: 15px;
@@ -81,10 +92,13 @@ body {
   padding: 5px;
   margin: 5px;
   margin-top: 10px;
+  color: var(--pale-purple);
+  background-color: var(--dark-purple);
+  cursor: pointer;
 }
 
 .special {
-  border: 1px solid black;
+  border: 1px solid var(--dark-purple);
   font-weight: bold;
 }
 
@@ -112,4 +126,16 @@ body {
 .editSongs {
     border: 1px dashed black;
     margin-top: 10px;
+}
+
+.add-bar {
+  font-size: 25px;
+}
+
+@media (min-width: 600px) {
+
+.add-bar {
+  font-size: 18px;
+}
+
 }
