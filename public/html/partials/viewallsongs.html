@@ -6,7 +6,7 @@
   <input class="add-buttons" type="text" ng-model="ctrl.songTitle" placeholder="Song title" required>
   <input class="add-buttons" type="text" ng-model="ctrl.songArtist" placeholder="Artist" required>
   <input class="add-buttons" type="text" ng-model="ctrl.songUrl" placeholder="Youtube URL" required>
-  <input class="add-buttons" type="submit" value="Add Song">
+  <input class="add-buttons special" type="submit" value="Add Song">
 </form>
 <br/>
 <br/>
@@ -16,9 +16,11 @@
 <div class="flex-container">
 <!-- List of songs -->
 <div class='box' ng-repeat="song in ctrl.songs">
-  <span><b>Song: </b></span><span>{{song.title}}</span>
+<div>
+  <span><b>Song: </b></span><span class="song-info">{{song.title}}</span>
   <br/>
-  <span><b>Artist: </b></span><span>{{song.artist}}</span>
+  <span><b>Artist: </b></span><span class="song-info">{{song.artist}}</span>
+  </div>
   <br/>
   <iframe width="400" height="225" src="{{song.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   <br/>
@@ -34,7 +36,7 @@
     </div>
     <form ng-if='($index === ctrl.indexToShow)' ng-submit='ctrl.addToNewCollection(song)'>
       <input class="add-buttons" type='text' ng-model='ctrl.collectionName' placeholder='Collection name'>
-      <button class="add-buttons" type='submit'>Add to a new collection</button>
+      <button class="add-buttons special" type='submit'>Add to a new collection</button>
     </form>
 <!-- Add to collection buttons -->
 
