@@ -11,12 +11,14 @@
 <!-- Header into this file -->
 <div class="container">
   <div class="header">
-    <h1>Song Bird</h1>
+    <h1 ng-click="ctrl.changeInclude('viewallsongs')">Song Bird</h1>
   </div>
+  <!-- partial for about us modal -->
+  <div ng-include="'html/partials/aboutus.html'"></div>
   <!-- partial for the log in sign up -->
-  <div ng-include="'partials/loginsignup'"></div>
+  <div ng-include="'html/partials/loginsignup.html'"></div>
 <!-- menu partial -->
-  <div ng-include="'partials/menu'"></div>
+  <div ng-if='(ctrl.loggedInUser !== false)' ng-include="'html/partials/menu.html'"></div>
 
   <div ng-include="ctrl.includePath">
 
