@@ -1,16 +1,33 @@
+:root {
+    /* insert root colors and fonts here */
+}
+
 body {
   text-align: center;
 }
 
-.nav {
-  display: flex;
-  width: 500px;
-  justify-content: space-around;
+.header {
+    width: 90%;
+    min-width: 450px;
+    margin: auto;
+    border: 1px solid black;
+    margin-top: 20px;
 }
 
-.nav *:hover {
-  text-decoration: underline;
+.nav {
+    display: flex;
+    width: 450px;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.nav-button {
+    outline: 1px solid black;
+    padding: 10px;
+}
+.nav-button:hover {
   cursor: pointer;
+  outline: 2px solid black;
 }
 
 #about {

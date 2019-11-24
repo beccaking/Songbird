@@ -1,10 +1,10 @@
 <div class="nav">
-    <h3 id='about'
+    <h3 class="nav-button" id='about'
     ng-if="ctrl.loggedInUser !== false"
     ng-click='ctrl.openModal()'>About</h3>
-    <h3 ng-click="ctrl.changeInclude('viewallsongs')">All Songs</h3>
-    <h3 ng-click="ctrl.changeInclude('viewusercollection')">My  Collections</h3>
-    <h3
+    <h3 class="nav-button" ng-click="ctrl.changeInclude('viewallsongs')">All Songs</h3>
+    <h3 class="nav-button" ng-click="ctrl.changeInclude('viewusercollection')">My  Collections</h3>
+    <h3 class="nav-button"
     ng-if="ctrl.loggedInUser !== false"
     ng-click="ctrl.logout()">Logout</h3>
 </div>
