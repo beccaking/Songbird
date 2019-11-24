@@ -43,7 +43,7 @@
 <!-- admin functions -->
   <button class="add-buttons special" ng-if='(ctrl.loggedInUser.username === "admin")' ng-click='ctrl.delete(song)'>Delete Song</button>
 
-  <div class="editSongs">
+  <div class="editSongs" ng-if='(ctrl.loggedInUser.username === "admin">
   <form ng-if='(ctrl.loggedInUser.username === "admin")' ng-submit='ctrl.edit(song)'>
     Name:<input class="add-buttons" type="text" ng-model='ctrl.editedTitle' placeholder='{{song.title}}'>
     Artist:<input class="add-buttons" type="text" ng-model='ctrl.editedArtist' placeholder='{{song.artist}}'>
