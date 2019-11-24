@@ -1,4 +1,6 @@
-<h3 id='about' ng-click='ctrl.openModal()'>About the Site</h3>
+<h3 id='about'
+ng-if="ctrl.loggedInUser === false"
+ng-click='ctrl.openModal()'>About the Site</h3>
 <div id='modal' ng-if='ctrl.open'>
   <div id='modal-textbox'>
   <h3>About Song Bird</h3>
