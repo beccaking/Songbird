@@ -32,14 +32,16 @@
   <!-- List of songs -->
   <div class="flex-container">
   <div class="box" ng-repeat='song in ctrl.collectionSongs track by $index'>
+      <div>
       <span><b>Song: </b></span>
-      <span>{{song.title}}</span>
+     <span class="song-info">{{song.title}}</span>
       <br/>
       <span><b>Artist: </b></span>
-      <span>{{song.artist}}</span>
+      <span class="song-info">{{song.artist}}</span>
+      </div>
       <br/>
       <iframe width="400" height="225" src="{{song.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <h4 ng-click="ctrl.removeSongFromPlaylist(song)">Remove Song From Playlist</h4>
+      <button class="add-buttons special" ng-click="ctrl.removeSongFromPlaylist(song)">Remove Song From Playlist</button>
       <br/>
   </div>
   </div>
