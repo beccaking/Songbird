@@ -1,3 +1,7 @@
+body {
+  text-align: center;
+}
+
 .nav {
   display: flex;
   width: 500px;
@@ -7,4 +11,59 @@
 .nav *:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+#about {
+  cursor: pointer;
+}
+
+#modal {
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  overflow: auto;
+}
+
+#modal-textbox {
+  background-color: #F2F2F2;
+  border: 1px solid black;
+  height: 200px;
+  width: 400px;
+  border-radius: 2px;
+  margin: 150px auto;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+#close {
+  color: black;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.box {
+  border: 2px solid black;
+  background-color: #F2F2F2;
+  width: 400px;
+  margin: 15px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2)
+}
+
+.add-buttons {
+  padding: 5px;
+  margin: 5px;
+}
+
+.special {
+  border: 1px solid black;
+  font-weight: bold;
 }

@@ -1,14 +1,26 @@
     <!--create new collection (on the user collection page, but when they click something it will toggle show) -->
+<div ng-if="ctrl.loggedInUser !== false">
 <h1>View User's Collections Here</h1>
 
 <div class="new-collection">
   <form ng-submit="ctrl.newCollection()">
-    <input ng-model='ctrl.name' type="text" placeholder='Collection Name'>
+    <input ng-model='ctrl.name' type="text" placeholder='Collection Name' required>
     <input type="submit" value="Create New Collection">
   </form>
 </div>
-
-<div ng-repeat='collection in ctrl.collections'>
-  <h2>{{collection.name}} - <span ng-click="ctrl.deleteCollection(collection)">X</span></h2>
-
 </div>
+
+<div ng-repeat="collection in ctrl.collections">
+  <h2><span ng-click="ctrl.index = $index; ctrl.showSongs(collection)" >{{collection.name}}</span> - <span ng-click="ctrl.deleteCollection(collection)">X</span></h2>
+  </div>
+  <div ng-repeat='song in ctrl.collectionSongs track by $index'>
+      <span><b>Song: </b></span>
+      <span>{{song.title}}</span>
+      <br/>
+      <span><b>Artist: </b></span>
+      <span>{{song.artist}}</span>
+      <br/>
+      <iframe width="400" height="225" src="{{song.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <h4 ng-click="ctrl.removeSongFromPlaylist(song)">Remove Song From Playlist</h4>
+      <br/>
+  </div>
