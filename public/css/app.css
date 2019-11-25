@@ -135,7 +135,8 @@ body {
 .song-title-and-info {
   background-color: var(--dark-purple);
   border-bottom: 0.2px solid var(--pale-purple);
-  width: 100%;
+  width: 98%;
+  border-radius: 5px;
   padding: 5px;
   text-align: left;
 }
