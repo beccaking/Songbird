@@ -1,24 +1,26 @@
-<div ng-if="ctrl.loggedInUser === false">
-    <button
-    ng-if="ctrl.signupLoginButtons === true"
-    ng-click="ctrl.toggleSignup()">Signup</button>
-    <button
-    ng-if="ctrl.signupLoginButtons === true"
-    ng-click="ctrl.toggleLogin()">Login</button>
+<div class="login-signup-boxes">
+    <div ng-if="ctrl.loggedInUser === false">
+        <button class='add-buttons special signup'
+        ng-if="ctrl.signupLoginButtons === true"
+        ng-click="ctrl.toggleSignup()">Signup</button>
+        <button class='addbuttons special signup'
+        ng-if="ctrl.signupLoginButtons === true"
+        ng-click="ctrl.toggleLogin()">Login</button>
     <div ng-if="ctrl.signupButton === true">
-    <form ng-submit="ctrl.signup()">
-        username: <input ng-model="ctrl.signupUsername" text" name="username"/><br/>
-        password: <input ng-model="ctrl.signupPassword" type="password" name="password"/><br/>
-        <input type="submit" value="Signup">
-    </form>
-    <button ng-click="ctrl.toggleSignup()">Cancel</button>
+        <form ng-submit="ctrl.signup()">
+            username: <input ng-model="ctrl.signupUsername" text" name="username"/><br/>
+            password: <input ng-model="ctrl.signupPassword" type="password" name="password"/><br/>
+            <input class='add-buttons special login' type="submit" value="Signup">
+        </form>
+        <button class='add-buttons special login cancel' ng-click="ctrl.toggleSignup()">Cancel</button>
     </div>
-    <div ng-if="ctrl.loginButton === true">
-    <span class='error' ng-if='ctrl.showError === true'>Invalid username or password</span>
-    <form ng-submit="ctrl.login()">
-        username: <input ng-model="ctrl.loginUsername" type="text" name="username"/><br/>
-        password: <input ng-model="ctrl.loginPassword" type="password" name="password"/><br/>
-        <input type="submit" value="Login">
-    </form>
-    <button ng-click="ctrl.toggleLogin()">Cancel</button>
+    <div  ng-if="ctrl.loginButton === true">
+        <span class='error' ng-if='ctrl.showError === true'>Invalid username or password</span>
+        <form ng-submit="ctrl.login()">
+            username: <input ng-model="ctrl.loginUsername" type="text" name="username"/><br/>
+            password: <input ng-model="ctrl.loginPassword" type="password" name="password"/><br/>
+            <input class='add-buttons special login' type="submit" value="Login">
+        </form>
+        <button class='add-buttons special login cancel' ng-click="ctrl.toggleLogin()">Cancel</button>
+    </div>
 </div>
