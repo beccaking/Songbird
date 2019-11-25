@@ -12,6 +12,10 @@ body {
   background: var(--dark-purple);
   color: var(--pale-purple);
   font-family: 'Roboto', sans-serif;
+  margin: 0;
+  /* to keep the footer at the very bottom of the page */
+  position: relative;
+  min-height: 100vh;
 }
 
 .header {
@@ -29,6 +33,11 @@ body {
   max-width: 750px;
 }
 
+.menu {
+  background: var(--mauve);
+  box-shadow: 0 5px 5px rgba(0,0,0,1);
+}
+
 .nav {
     display: flex;
     width: 450px;
@@ -38,9 +47,10 @@ body {
 }
 
 .nav-button {
-    outline: 1px solid white;
     padding: 10px;
+    margin: .2em;
 }
+
 .nav-button:hover {
   cursor: pointer;
   outline: 2px solid white;
@@ -65,16 +75,26 @@ body {
   background-color: var(--pale-purple);
   color: var(--dark-purple);
   border: 1px solid black;
-  height: 200px;
+  height: 250px;
   width: 400px;
   border-radius: 2px;
   margin: 150px auto;
   box-shadow: 0 2px 2px rgba(0,0,0,0.2);
   text-align: center;
+  padding: 1em;
 }
 
 #close {
   color: black;
+}
+
+.content {
+  /* This is to keep the footer out of the content area */
+  padding-bottom: 2.5rem;
+}
+
+.all-songs-header {
+  margin: 1em;
 }
 
 .flex-container {
@@ -91,7 +111,11 @@ body {
   width: 400px;
   margin: 15px;
   padding: 10px;
-  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 5px rgba(0,0,0,1);
+}
+
+.sub-header {
+  margin: 1em;
 }
 
 .add-buttons {
@@ -99,14 +123,15 @@ body {
   margin: 5px;
   margin-top: 10px;
   color: var(--pale-purple);
-  background-color: var(--dark-purple);
+  background-color: white;
   cursor: pointer;
 }
 
 .special {
-  border: 1px solid var(--mauve);
+  border: 2px solid var(--mauve);
+  background: var(--dark-purple);
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.1em;
   padding: .25em;
   border-radius: 5px;
 }
@@ -118,13 +143,16 @@ body {
 .collection {
     display: flex;
     justify-content: space-around;
-    border: 1px solid gold;
-    margin: 10px;
+    border: 2px solid var(--dark-purple);
     cursor: pointer;
 }
 
+.collection:hover {
+    border: 2px solid var(--mauve);
+}
+
 .collection-info {
-    margin: 10px;
+    margin: 0 .5em;
 }
 
 .collection-info > p {
@@ -137,12 +165,17 @@ body {
     margin-top: 10px;
 }
 
-.add-bar {
-  font-size: 25px;
-}
-
 @media (min-width: 600px) {
 
 .add-bar {
   font-size: 18px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid var(--mauve);
+  font-size: .75em;
+  padding: 1em;
 }

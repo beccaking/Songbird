@@ -1,12 +1,10 @@
     <!--create new collection (on the user collection page, but when they click something it will toggle show) -->
 <div ng-if="ctrl.loggedInUser !== false">
 <h1>My Collections</h1>
-<h4>Create a new collection: </h4>
-
 <div class="new-collection">
   <form ng-submit="ctrl.newCollection()">
-    <input class="add-buttons" ng-model='ctrl.name' type="text" placeholder='Collection Name' required>
-    <input class="add-buttons special" type="submit" value="Create Collection">
+    <input class="add-buttons" ng-model='ctrl.name' type="text" placeholder='New Collection Name' required>
+    <input class="add-buttons special" type="submit" value="Create New Collection">
   </form>
 </div>
 </div>
@@ -16,7 +14,7 @@
     <div class="collection">
         <div class="collection-info">
             <!-- ctrl.chosenCollection needs to be reassigned to the name of the collection clicked -->
-            <p ng-click="ctrl.index = $index;
+            <p class='collection-name' ng-click="ctrl.index = $index;
             ctrl.showSongs(collection)">{{collection.name}}</p>
         </div>
         <div class="collection-info">
