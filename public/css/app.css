@@ -11,6 +11,7 @@ body {
   text-align: center;
   background: var(--dark-purple);
   color: var(--pale-purple);
+  font-family: 'Roboto', sans-serif;
 }
 
 .header {
@@ -26,10 +27,6 @@ body {
   width: 80%;
   min-width: 400px;
   max-width: 750px;
-}
-
-h4 {
-  font-family: var(--serif)
 }
 
 .nav {
