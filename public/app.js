@@ -30,6 +30,8 @@ console.log(this.loggedInUser + ' on load')
         })
     }
 
+this.showError = false
+
     this.login = () => {
         $http({
             method:'POST',
@@ -46,6 +48,7 @@ console.log(this.loggedInUser + ' on load')
             } else {
                 this.loginUsername = null;
                 this.loginPassword = null;
+                this.showError = true
             }
 
         }, (error) => {
@@ -66,6 +69,7 @@ console.log(this.loggedInUser + ' on load')
     this.toggleLogin = () => {
         this.loginButton = !this.loginButton;
         this.signupButton = false;
+        this.showError = false
         this.signupLoginButtons = !this.signupLoginButtons;
     }
 
@@ -79,6 +83,7 @@ console.log(this.loggedInUser + ' on load')
             this.loginPassword = null;
             this.signupUsername = null;
             this.signupPassword = null;
+            this.showError = false
             this.changeInclude('viewallsongs');
             this.getUserCollections();
         }, (error) => {

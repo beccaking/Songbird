@@ -5,17 +5,23 @@
     --dark-grey: #1C1C1C;
     --mauve: #8E6B6B;
     --cursive: 'Calistoga', cursive;
+    --sans-serif: 'Roboto', sans-serif;
 }
 
 body {
   text-align: center;
   background: var(--dark-purple);
   color: var(--pale-purple);
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--sans-serif);
   margin: 0;
   /* to keep the footer at the very bottom of the page */
   position: relative;
   min-height: 100vh;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
 }
 
 .header {
@@ -58,6 +64,18 @@ body {
 
 #about {
   cursor: pointer;
+  font-family: var(--cursive);
+  position: relative;
+  bottom: 60px;
+}
+
+.login-signup-boxes {
+  position: relative;
+  bottom: 60px;
+}
+
+.title {
+  font-family: var(--cursive);
 }
 
 #modal {
@@ -95,6 +113,7 @@ body {
 
 .all-songs-header {
   margin: 1em;
+  font-family: var(--cursive);
 }
 
 .flex-container {
@@ -105,13 +124,20 @@ body {
 }
 
 .box {
-  border: 0.5px solid var(--dark-grey);
   background-color: var(--mauve);
   border-radius: 5px;
   width: 400px;
   margin: 15px;
   padding: 10px;
   box-shadow: 0 5px 5px rgba(0,0,0,1);
+}
+
+.song-title-and-info {
+  background-color: var(--dark-purple);
+  border-bottom: 0.2px solid var(--pale-purple);
+  width: 100%;
+  padding: 5px;
+  text-align: left;
 }
 
 .sub-header {
@@ -122,18 +148,36 @@ body {
   padding: 5px;
   margin: 5px;
   margin-top: 10px;
-  color: var(--pale-purple);
+  color: var(--dark-purple);
   background-color: white;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .special {
-  border: 2px solid var(--mauve);
+  border: 1px solid var(--pale-purple);
+  color: var(--pale-purple);
   background: var(--dark-purple);
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: 0.8em;
   padding: .25em;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.signup{
+  font-family: var(--sans-serif);
+}
+
+.login {
+  border: none;
+  font-family: var(--sans-serif);
+}
+
+.cancel {
+  position: relative;
+  bottom: 40px;
+  left: 80px;
 }
 
 .song-info{
@@ -143,21 +187,29 @@ body {
 .collection {
     display: flex;
     justify-content: space-around;
-    border: 2px solid var(--dark-purple);
     cursor: pointer;
-}
-
-.collection:hover {
-    border: 2px solid var(--mauve);
 }
 
 .collection-info {
     margin: 0 .5em;
 }
 
-.collection-info > p {
-    font-size: 20px;
+.collection-name {
+    font-size: 30px;
     font-weight: bold;
+}
+
+.collection-name:hover {
+    color: var(--mauve);
+}
+
+.trash {
+  position: relative;
+  top: 25px;
+}
+
+.trash:hover {
+  color: red;
 }
 
 .editSongs {

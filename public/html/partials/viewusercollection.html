@@ -15,21 +15,22 @@
         <div class="collection-info">
             <!-- ctrl.chosenCollection needs to be reassigned to the name of the collection clicked -->
             <p class='collection-name' ng-click="ctrl.index = $index;
-            ctrl.showSongs(collection)">{{collection.name}}</p>
+            ctrl.showSongs(collection)">{{collection.name}} |</p>
         </div>
         <div class="collection-info">
-            <p ng-click="ctrl.deleteCollection(collection)"><ion-icon name="trash"></ion-icon></p>
+            <p class='trash' ng-click="ctrl.deleteCollection(collection)"><ion-icon name="trash"></ion-icon></p>
         </div>
     </div>
   </div>
   </div>
+  <hr>
   <!-- Name of chosen collection -->
   <h2
     ng-if="(ctrl.collectionToShow)"> {{ctrl.collectionToShow.name}}</h2>
   <!-- List of songs -->
   <div class="flex-container">
   <div class="box" ng-repeat='song in ctrl.collectionSongs track by $index'>
-      <div>
+      <div class='song-title-and-info'>
       <span><b>Song: </b></span>
      <span class="song-info">{{song.title}}</span>
       <br/>

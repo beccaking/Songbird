@@ -1,6 +1,5 @@
-
+<h1 ng-if='(ctrl.loggedInUser !== false)' class='all-songs-header'>All songs</h1>
 <!-- Add a song -->
-<h1 class='all-songs-header'>All Songs</h1>
 <div class='add-bar' ng-if="ctrl.loggedInUser !== false">
   <h4 class='sub-header'>Add a song to the database: </h4>
   <form ng-submit='ctrl.addSong()'>
@@ -13,10 +12,11 @@
   <br/>
 </div>
 <!-- Add a song -->
+
 <div class="flex-container">
   <!-- List of songs -->
   <div class='box' ng-repeat="song in ctrl.songs">
-    <div>
+    <div class='song-title-and-info'>
       <span><b>Song: </b></span><span class="song-info">{{song.title}}</span>
       <br/>
       <span><b>Artist: </b></span><span class="song-info">{{song.artist}}</span>
