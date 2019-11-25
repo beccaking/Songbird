@@ -12,20 +12,24 @@
   <body ng-controller="MainController as ctrl">
 <!-- Header into this file -->
 <div class="container">
-  <div class="header">
-    <img ng-click="ctrl.changeInclude('viewallsongs')" src="https://i.imgur.com/C4BBulr.png">
+  <div class="content">
+    <div class="header">
+      <img ng-click="ctrl.changeInclude('viewallsongs')" src="https://i.imgur.com/C4BBulr.png">
+    </div>
+    <!-- partial for about us modal -->
+    <div ng-include="'html/partials/aboutus.html'"></div>
+    <!-- partial for the log in sign up -->
+    <div ng-include="'html/partials/loginsignup.html'"></div>
+    <!-- menu partial -->
+    <div class='menu' ng-if='(ctrl.loggedInUser !== false)' ng-include="'html/partials/menu.html'"></div>
+
+    <div ng-include="ctrl.includePath">
+
+    </div>
   </div>
-  <!-- partial for about us modal -->
-  <div ng-include="'html/partials/aboutus.html'"></div>
-  <!-- partial for the log in sign up -->
-  <div ng-include="'html/partials/loginsignup.html'"></div>
-<!-- menu partial -->
-  <div ng-if='(ctrl.loggedInUser !== false)' ng-include="'html/partials/menu.html'"></div>
-
-  <div ng-include="ctrl.includePath">
-
-  </div>
-
+  <footer>
+    - Created by Ayla Ex, Becca King, and Jewls Krueger -
+  </footer>
 </div>
   </body>
 </html>
