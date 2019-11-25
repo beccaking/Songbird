@@ -15,14 +15,15 @@
         <div class="collection-info">
             <!-- ctrl.chosenCollection needs to be reassigned to the name of the collection clicked -->
             <p class='collection-name' ng-click="ctrl.index = $index;
-            ctrl.showSongs(collection)">{{collection.name}}</p>
+            ctrl.showSongs(collection)">{{collection.name}} |</p>
         </div>
         <div class="collection-info">
-            <p ng-click="ctrl.deleteCollection(collection)"><ion-icon name="trash"></ion-icon></p>
+            <p class='trash' ng-click="ctrl.deleteCollection(collection)"><ion-icon name="trash"></ion-icon></p>
         </div>
     </div>
   </div>
   </div>
+  <hr>
   <!-- Name of chosen collection -->
   <h2
     ng-if="(ctrl.collectionToShow)"> {{ctrl.collectionToShow.name}}</h2>

@@ -14,6 +14,7 @@
     <button ng-click="ctrl.toggleSignup()">Cancel</button>
     </div>
     <div ng-if="ctrl.loginButton === true">
+    <span class='error' ng-if='ctrl.showError === true'>Invalid username or password</span>
     <form ng-submit="ctrl.login()">
         username: <input ng-model="ctrl.loginUsername" type="text" name="username"/><br/>
         password: <input ng-model="ctrl.loginPassword" type="password" name="password"/><br/>
