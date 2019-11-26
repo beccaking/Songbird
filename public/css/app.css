@@ -23,10 +23,16 @@ body {
     color: var(--pale-purple);
 }
 
+.modal-links {
+    color: var(--dark-purple);
+}
+
 .error {
   color: red;
   font-weight: bold;
 }
+
+
 
 .header {
     width: 90%;
@@ -94,12 +100,13 @@ body {
 }
 
 #modal-textbox {
-  background-color: var(--pale-purple);
+  /* background-color: var(--pale-purple); */
+  background-color: var(--mauve);
   color: var(--dark-purple);
   border: 1px solid black;
   height: 250px;
   width: 400px;
-  border-radius: 2px;
+  border-radius: 5px;
   margin: 150px auto;
   box-shadow: 0 2px 2px rgba(0,0,0,0.2);
   text-align: center;
@@ -107,7 +114,7 @@ body {
 }
 
 #close {
-  color: black;
+  color: var(--dark-purple);
 }
 
 .content {
