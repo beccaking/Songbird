@@ -179,6 +179,8 @@ body {
 
 .signup{
   font-family: var(--sans-serif);
+  font-size: 1em;
+  padding: .5em;
 }
 
 .login {
