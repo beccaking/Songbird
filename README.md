@@ -54,7 +54,8 @@ From there we were able to work simultaneously in different files to complete th
 
 We then continued to add to our Trello list of tasks and divvy up the work based on who was already working with the files and features in question.
 
-We communicated via Slack while working on our separate tasks to make sure we only had one person working in app.js at a time, and when we ran into issues and/or bugs, we added them to a dedicated 'Bug Tracker' on Trello and took turns debugging and troubleshooting until we resolved the issue.
+We communicated via Slack while working on our separate tasks to make sure we only had one person working in app.js and app.css at a time. When we ran into issues and/or bugs, we added them to a dedicated 'Bug Tracker' on Trello and took turns debugging and troubleshooting until we resolved the issue.
 
 ## Unsolved Problems
 * Refreshing while on the "View User's Collections" page brings the user back to the "All Songs Page" (the landing page).
+* Songs that have been removed from the database are still in users collections. Users are unable to remove them, despite the fact they do not show properly or play.
