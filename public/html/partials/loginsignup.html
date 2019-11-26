@@ -8,8 +8,8 @@
         ng-click="ctrl.toggleLogin()">Login</button>
     <div ng-if="ctrl.signupButton === true">
         <form ng-submit="ctrl.signup()">
-            username: <input ng-model="ctrl.signupUsername" text" name="username"/><br/>
-            password: <input ng-model="ctrl.signupPassword" type="password" name="password"/><br/>
+            Username: <input class="add-buttons" ng-model="ctrl.signupUsername" text" name="username"/><br/>
+            Password: <input class="add-buttons" ng-model="ctrl.signupPassword" type="password" name="password"/><br/>
             <input class='add-buttons special login' type="submit" value="Signup">
         </form>
         <button class='add-buttons special login cancel' ng-click="ctrl.toggleSignup()">Cancel</button>
@@ -17,8 +17,8 @@
     <div  ng-if="ctrl.loginButton === true">
         <span class='error' ng-if='ctrl.showError === true'>Invalid username or password</span>
         <form ng-submit="ctrl.login()">
-            username: <input ng-model="ctrl.loginUsername" type="text" name="username"/><br/>
-            password: <input ng-model="ctrl.loginPassword" type="password" name="password"/><br/>
+            Username: <input class="add-buttons" ng-model="ctrl.loginUsername" type="text" name="username"/><br/>
+            Password: <input class="add-buttons" ng-model="ctrl.loginPassword" type="password" name="password"/><br/>
             <input class='add-buttons special login' type="submit" value="Login">
         </form>
         <button class='add-buttons special login cancel' ng-click="ctrl.toggleLogin()">Cancel</button>
