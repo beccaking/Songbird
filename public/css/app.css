@@ -183,15 +183,13 @@ body {
   padding: .5em;
 }
 
-.login {
-  border: none;
+/* .login {
+    border: 1px solid var(--pale-purple);
   font-family: var(--sans-serif);
-}
+} */
 
 .cancel {
-  position: relative;
-  bottom: 35px;
-  left: 80px;
+  border: none;
 }
 
 .song-info{
