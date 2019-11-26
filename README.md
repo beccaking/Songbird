@@ -1,7 +1,7 @@
-# Song bird
+# Songbird
 A music sharing app where users can upload youtube videos to a shared database, create personal collections, and add videos to their collections.
 
-## Live Version
+## Live Site
 [Song Bird - A Music Sharing App](https://songbirds.herokuapp.com/)
 
 ## Authors
