@@ -83,7 +83,10 @@ this.showError = false
             this.loginPassword = null;
             this.signupUsername = null;
             this.signupPassword = null;
-            this.showError = false
+            this.showError = false;
+            this.signupButton = false;
+            this.loginButton = false;
+            this.signupLoginButtons = true;
             this.changeInclude('viewallsongs');
             this.getUserCollections();
         }, (error) => {
