@@ -2,7 +2,7 @@
     <div ng-if="ctrl.loggedInUser === false">
         <button class='add-buttons special signup'
         ng-if="ctrl.signupLoginButtons === true"
-        ng-click="ctrl.toggleSignup()">Signup</button>
+        ng-click="ctrl.toggleSignup()">Sign Up</button>
         <button class='addbuttons special signup'
         ng-if="ctrl.signupLoginButtons === true"
         ng-click="ctrl.toggleLogin()">Login</button>
@@ -10,7 +10,7 @@
         <form ng-submit="ctrl.signup()">
             Username: <input class="add-buttons" ng-model="ctrl.signupUsername" text" name="username"/><br/>
             Password: <input class="add-buttons" ng-model="ctrl.signupPassword" type="password" name="password"/><br/>
-            <input class='add-buttons special login' type="submit" value="Signup">
+            <input class='add-buttons special signup' type="submit" value="Sign Up">
         </form>
         <button class='add-buttons special login cancel' ng-click="ctrl.toggleSignup()">Cancel</button>
     </div>
@@ -19,7 +19,7 @@
         <form ng-submit="ctrl.login()">
             Username: <input class="add-buttons" ng-model="ctrl.loginUsername" type="text" name="username"/><br/>
             Password: <input class="add-buttons" ng-model="ctrl.loginPassword" type="password" name="password"/><br/>
-            <input class='add-buttons special login' type="submit" value="Login">
+            <input class='add-buttons special signup' type="submit" value="Login">
         </form>
         <button class='add-buttons special login cancel' ng-click="ctrl.toggleLogin()">Cancel</button>
     </div>
