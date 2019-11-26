@@ -5,14 +5,34 @@
     --dark-grey: #1C1C1C;
     --mauve: #8E6B6B;
     --cursive: 'Calistoga', cursive;
+    --sans-serif: 'Roboto', sans-serif;
 }
 
 body {
   text-align: center;
   background: var(--dark-purple);
   color: var(--pale-purple);
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--sans-serif);
+  margin: 0;
+  /* to keep the footer at the very bottom of the page */
+  position: relative;
+  min-height: 100vh;
 }
+
+.git-links {
+    color: var(--pale-purple);
+}
+
+.modal-links {
+    color: var(--dark-purple);
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+
 
 .header {
     width: 90%;
@@ -29,6 +49,11 @@ body {
   max-width: 750px;
 }
 
+.menu {
+  background: var(--mauve);
+  box-shadow: 0 5px 5px rgba(0,0,0,1);
+}
+
 .nav {
     display: flex;
     width: 450px;
@@ -38,9 +63,10 @@ body {
 }
 
 .nav-button {
-    outline: 1px solid white;
     padding: 10px;
+    margin: .2em;
 }
+
 .nav-button:hover {
   cursor: pointer;
   outline: 2px solid white;
@@ -48,6 +74,18 @@ body {
 
 #about {
   cursor: pointer;
+  font-family: var(--cursive);
+  position: relative;
+  bottom: 60px;
+}
+
+.login-signup-boxes {
+  position: relative;
+  bottom: 60px;
+}
+
+.title {
+  font-family: var(--cursive);
 }
 
 #modal {
@@ -62,19 +100,31 @@ body {
 }
 
 #modal-textbox {
-  background-color: var(--pale-purple);
+  /* background-color: var(--pale-purple); */
+  background-color: var(--mauve);
   color: var(--dark-purple);
   border: 1px solid black;
-  height: 200px;
+  height: 250px;
   width: 400px;
-  border-radius: 2px;
+  border-radius: 5px;
   margin: 150px auto;
   box-shadow: 0 2px 2px rgba(0,0,0,0.2);
   text-align: center;
+  padding: 1em;
 }
 
 #close {
-  color: black;
+  color: var(--dark-purple);
+}
+
+.content {
+  /* This is to keep the footer out of the content area */
+  padding-bottom: 2.5rem;
+}
+
+.all-songs-header {
+  margin: 1em;
+  font-family: var(--cursive);
 }
 
 .flex-container {
@@ -85,30 +135,61 @@ body {
 }
 
 .box {
-  border: 0.5px solid var(--dark-grey);
   background-color: var(--mauve);
   border-radius: 5px;
   width: 400px;
   margin: 15px;
   padding: 10px;
-  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 5px rgba(0,0,0,1);
+}
+
+.song-title-and-info {
+  background-color: var(--dark-purple);
+  border-bottom: 0.2px solid var(--pale-purple);
+  width: 98%;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: left;
+}
+
+.sub-header {
+  margin: 1em;
 }
 
 .add-buttons {
   padding: 5px;
   margin: 5px;
   margin-top: 10px;
-  color: var(--pale-purple);
-  background-color: var(--dark-purple);
+  color: var(--dark-purple);
+  background-color: white;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .special {
-  border: 1px solid var(--mauve);
+  border: 1px solid var(--pale-purple);
+  color: var(--pale-purple);
+  background: var(--dark-purple);
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 0.8em;
   padding: .25em;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.signup{
+  font-family: var(--sans-serif);
+  font-size: 1em;
+  padding: .5em;
+}
+
+/* .login {
+    border: 1px solid var(--pale-purple);
+  font-family: var(--sans-serif);
+} */
+
+.cancel {
+  border: none;
 }
 
 .song-info{
@@ -118,18 +199,29 @@ body {
 .collection {
     display: flex;
     justify-content: space-around;
-    border: 1px solid gold;
-    margin: 10px;
     cursor: pointer;
 }
 
 .collection-info {
-    margin: 10px;
+    margin: 0 .5em
 }
 
-.collection-info > p {
-    font-size: 20px;
+.collection-name {
+    font-size: 30px;
     font-weight: bold;
+}
+
+.collection-name:hover {
+    color: var(--mauve);
+}
+
+.trash {
+  position: relative;
+  top: 25px;
+}
+
+.trash:hover {
+  color: red;
 }
 
 .editSongs {
@@ -137,12 +229,17 @@ body {
     margin-top: 10px;
 }
 
-.add-bar {
-  font-size: 25px;
-}
-
 @media (min-width: 600px) {
 
 .add-bar {
   font-size: 18px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid var(--mauve);
+  font-size: .75em;
+  padding: 1em;
 }
